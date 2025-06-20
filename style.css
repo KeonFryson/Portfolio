@@ -133,9 +133,9 @@ ul.main-menu li a.active {
 }
 
 /* Utility classes */
-.hide {
+/*.hide {
   display:none;
-}
+}*/
 .show {
   display:block;
 }
