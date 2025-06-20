@@ -34,16 +34,27 @@
         });
     }
 
+    $(document).ready(function () {
+        $('.main-menu a').on('click', function (e) {
+            var target = $(this).attr('href');
+            if (target.startsWith('#')) {
+                e.preventDefault();
+                var $target = $(target);
+                if ($target.length) {
+                    $('html, body').animate({
+                        scrollTop: $target.offset().top
+                    }, 600); // 600ms for smooth scroll
+                }
+            }
+        });
+    });
+
     // Call the function when the document is ready
     $(function () {
         loadGitHubProjects();
     });
 
   $(window).on('load hashchange', function(){
-    
-    // First hide all content regions, then show the content-region specified in the URL hash 
-    // (or if no hash URL is found, default to first menu item)
-    $('.content-region').hide();
     
     // Remove any active classes on the main-menu
     $('.main-menu a').removeClass('active');
