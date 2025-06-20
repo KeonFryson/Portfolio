@@ -33,6 +33,20 @@
             $container.html('<p>Could not load GitHub projects.</p>');
         });
     }
+    $(document).ready(function () {
+        $('.main-menu a').on('click', function (e) {
+            var target = $(this).attr('href');
+            if (target.startsWith('#')) {
+                e.preventDefault();
+                var $target = $(target);
+                if ($target.length) {
+                    $('html, body').animate({
+                        scrollTop: $target.offset().top
+                    }, 600); // 600ms for smooth scroll
+                }
+            }
+        });
+    });
 
     // Call the function when the document is ready
     $(function () {
