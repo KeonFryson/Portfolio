@@ -56,8 +56,6 @@
 
   $(window).on('load hashchange', function(){
     
-    // Remove any active classes on the main-menu
-    $('.main-menu a').removeClass('active');
     var region = location.hash.toString() || $('.main-menu a:first').attr('href');
     
     // Now show the region specified in the URL hash
