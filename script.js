@@ -54,21 +54,6 @@
         loadGitHubProjects();
     });
 
-  $(window).on('load hashchange', function(){
-    
-    var region = location.hash.toString() || $('.main-menu a:first').attr('href');
-    
-    // Now show the region specified in the URL hash
-    $(region).show();
-    
-    // Highlight the menu link associated with this region by adding the .active CSS class
-    $('.main-menu a[href="'+ region +'"]').addClass('active'); 
 
-    // Alternate method: Use AJAX to load the contents of an external file into a div based on URL fragment
-    // This will extract the region name from URL hash, and then load [region].html into the main #content div
-    // var region = location.hash.toString() || '#first';
-    // $('#content').load(region.slice(1) + '.html')
-    
-  });
   
 })(jQuery);
