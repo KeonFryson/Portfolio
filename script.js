@@ -2,7 +2,43 @@
 (function ($) {
   
   // We use some Javascript and the URL #fragment to hide/show different parts of the page
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Linking_to_an_element_on_the_same_page
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Linking_to_an_element_on_the_same_page
+
+    // Function to load and display GitHub projects for KeonFryson
+    function loadGitHubProjects() {
+        var $container = $('#github-projects');
+        if ($container.length === 0) return; // Only run if the container exists
+        $container.html('<p>Loading projects...</p>');
+        $.getJSON('https://api.github.com/users/KeonFryson/repos?sort=updated', function (repos) {
+            $container.empty();
+            if (!repos.length) {
+                $container.append('<p>No public projects found.</p>');
+                return;
+            }
+            var $list = $('<ul></ul>');
+            repos.forEach(function (repo) {
+                var $item = $('<li></li>');
+                var $link = $('<a></a>')
+                    .attr('href', repo.html_url)
+                    .attr('target', '_blank')
+                    .text(repo.name);
+                $item.append($link);
+                if (repo.description) {
+                    $item.append(' – ' + repo.description);
+                }
+                $list.append($item);
+            });
+            $container.append($list);
+        }).fail(function () {
+            $container.html('<p>Could not load GitHub projects.</p>');
+        });
+    }
+
+    // Call the function when the document is ready
+    $(function () {
+        loadGitHubProjects();
+    });
+
   $(window).on('load hashchange', function(){
     
     // First hide all content regions, then show the content-region specified in the URL hash 
