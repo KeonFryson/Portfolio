@@ -101,7 +101,7 @@ body {
   margin:25px auto;
 }
 header, #content, footer {
-    background: #2ecc40; /* Bright green */
+    background: #000000; /* Bright green */
     padding: 25px;
     color: #FFFFFF;
     border-radius: 16px;
