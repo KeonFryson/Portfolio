@@ -15,8 +15,20 @@
                 $container.append('<p>No public projects found.</p>');
                 return;
             }
+            // Only include the specified repositories
+            var allowedRepos = [
+                "https://github.com/KeonFryson/END2502",
+                "https://github.com/KeonFryson/Week-4"
+            ];
+            var filtered = repos.filter(function (repo) {
+                return allowedRepos.includes(repo.html_url);
+            });
+            if (!filtered.length) {
+                $container.append('<p>No matching projects found.</p>');
+                return;
+            }
             var $list = $('<ul></ul>');
-            repos.forEach(function (repo) {
+            filtered.forEach(function (repo) {
                 var $item = $('<li></li>');
                 var $link = $('<a></a>')
                     .attr('href', repo.html_url)
