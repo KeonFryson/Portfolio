@@ -1,0 +1,7 @@
+[project]
+name = portfolio
+compatibility_date = 2025-08-17
+
+[build]
+command = 
+directory = .
