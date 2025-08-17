@@ -1,7 +1,8 @@
-[project]
-name = portfolio
-compatibility_date = 2025-08-17
+name = "portfolio"
+compatibility_date = "2025-08-17"
 
-[build]
-command = 
-directory = .
+# This tells Cloudflare Pages where your final static files live
+pages_build_output_dir = "."
+
+# Optional: If you later add functions, put them in ./functions
+# functions = "./functions"
