@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Keon Fryson | Programmer Portfolio</title>
+    <meta name="description" content="Portfolio of Keon Fryson, Game Developer and UI/UX">
+    <meta name="author" content="Keon Fryson">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #eee;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #1f1f1f;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #00bcd4;
+        }
+
+            header img {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                margin-bottom: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+                color: #00bcd4;
+                letter-spacing: 2px;
+            }
+
+            header h3 {
+                color: #80deea;
+                margin-bottom: 1rem;
+            }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+            nav a {
+                color: #00bcd4;
+                text-decoration: none;
+                margin: 0 1rem;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+
+                nav a:hover {
+                    color: #80deea;
+                }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #1f1f1f;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 0 10px #00bcd4;
+            transition: transform 0.3s ease;
+        }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .project-card h3 {
+                margin-bottom: 0.5rem;
+                color: #00bcd4;
+            }
+
+            .project-card p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-card a {
+                color: #80deea;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+                .project-card a:hover {
+                    text-decoration: underline;
+                }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background: #00bcd4;
+            color: #121212;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 5px #00bcd4;
+        }
+
+        .soft-skills-list, .achievements-list, .languages-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .soft-skill, .achievement, .language {
+            background: #80deea;
+            color: #121212;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 5px #80deea;
+        }
+
+        #contact p, #contact a {
+            font-size: 1.1rem;
+        }
+
+        #contact a {
+            color: #00bcd4;
+        }
+
+            #contact a:hover {
+                color: #80deea;
+            }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #1f1f1f;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Profile.jpg" alt="Profile Photo">
+        <h1>Keon Fryson</h1>
+        <h3>Game Developer & Programmer</h3>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm Keon Fryson, a Game Developer specializing in gameplay programming and UI design, with experience in Unity and Unreal Engine.
+                I create engaging player experiences through clean, efficient code and intuitive UI systems. My projects include health bars, pause menus, inventory systems, and stat upgrades. Currently studying Game Development at Full Sail University, graduating September 2025. Passionate about combining creativity and technical skill to bring game worlds to life.
+            </p>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    <strong>Full Sail University, FL</strong> � Game Development<br>
+                    <em>Jan 2023  &ndash; Sep 2025</em>
+                </li>
+                <li>
+                    <strong>Wilson High School</strong><br>
+                    <em>Sep 2019 � May 2022</em>
+                </li>
+            </ul>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li>
+                    <strong>Real-Time Selections</strong> � UI/UX & Gameplay Developer (Student Unreal Engine Project)<br>
+                    <em>Jun 2025 � Present</em><br>
+                    � Led design and implementation of UI/UX systems for a real-time strategy game in Unreal Engine 5.<br>
+                    � Created interactive HUDs, building placement, and resource displays.<br>
+                    � Prototyped and polished gameplay features, including unit selection and command systems.<br>
+                    � Incorporated playtester feedback and optimized UI usability.<br>
+                    � Managed assets and source control using PerForce.
+                </li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Bare-Bones Shooter</h3>
+                    <p>
+                        Unreal Engine 5 (Student Assignment)<br>
+                        Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
+                    </p>
+                    <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>RasterSurface 3D Renderer</h3>
+                    <p>
+                        C++ (Student Assignment)<br>
+                        Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
+                    </p>
+                    <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>Shadow-Sentinel</h3>
+                    <p>
+                        Unity (Student Assignment)<br>
+                        Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
+                    </p>
+                    <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-list">
+                <span class="skill">Unity</span>
+                <span class="skill">Unreal Engine</span>
+                <span class="skill">C/C#</span>
+                <span class="skill">C++</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">PerForce</span>
+                <span class="skill">Debugging</span>
+                <span class="skill">Game Programming</span>
+            </div>
+            <h2>Soft Skills</h2>
+            <div class="soft-skills-list">
+                <span class="soft-skill">Communication</span>
+                <span class="soft-skill">Teamwork</span>
+                <span class="soft-skill">Problem-solving</span>
+                <span class="soft-skill">Time Management</span>
+                <span class="soft-skill">Customer Service</span>
+                <span class="soft-skill">Adaptability</span>
+            </div>
+            <h2>Achievements</h2>
+            <div class="achievements-list">
+                <span class="achievement">GPA: 3.59</span>
+            </div>
+            <h2>Languages</h2>
+            <div class="languages-list">
+                <span class="language">English</span>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+                ?? <a href="mailto:k.m.fryson112115@gmail.com">k.m.fryson112115@gmail.com</a><br>
+                ?? <a href="https://www.linkedin.com/in/keon-fryson-937447300/" target="_blank">LinkedIn</a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Keon Fryson. All rights reserved.
+    </footer>
+</body>
+</html>

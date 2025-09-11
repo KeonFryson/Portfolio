@@ -46,24 +46,46 @@
         });
     }
 
+    //$(document).ready(function () {
+    //    $('.main-menu a').on('click', function (e) {
+    //        var target = $(this).attr('href');
+    //        if (target.startsWith('#')) {
+    //            e.preventDefault();
+    //            var $target = $(target);
+    //            if ($target.length) {
+    //                $('html, body').animate({
+    //                    scrollTop: $target.offset().top
+    //                }, 600); // 600ms for smooth scroll
+    //            }
+    //        }
+    //    });
+    //});
+
+    // Call the function when the document is ready
     $(document).ready(function () {
-        $('.main-menu a').on('click', function (e) {
+        // Show About and Projects only on page load
+        $('#about, #projects').show();
+
+        // Handle nav clicks
+        $('header nav a').on('click', function (e) {
             var target = $(this).attr('href');
+
             if (target.startsWith('#')) {
                 e.preventDefault();
+
+                // Hide all, then show the clicked section
+                $('section').hide();
+                $(target).fadeIn(300);
+
+                // Smooth scroll
                 var $target = $(target);
                 if ($target.length) {
                     $('html, body').animate({
                         scrollTop: $target.offset().top
-                    }, 600); // 600ms for smooth scroll
+                    }, 600);
                 }
             }
         });
-    });
-
-    // Call the function when the document is ready
-    $(function () {
-        loadGitHubProjects();
     });
 
 

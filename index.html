@@ -19,168 +19,265 @@
 </head>
 
 <body>
-
-    <header id="header">
-        <img src="Profile.jpg" alt="Profile Photo" style="border-radius:50%;width:80px;height:80px;">
+    <header>
+        <img src="Profile.jpg" alt="Profile Photo">
         <h1>Keon Fryson</h1>
         <h3>Game Developer & Programmer</h3>
-        <ul class="main-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
+    <main>
+        <section id="home">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm Keon Fryson, a Game Developer specializing in gameplay programming and UI design, with experience in Unity and Unreal Engine.
+                I create engaging player experiences through clean, efficient code and intuitive UI systems. My projects include health bars, pause menus, inventory systems, and stat upgrades. I graduated with a Game Development degree from Full Sail University in September 2025. Passionate about combining creativity and technical skill to bring game worlds to life.
+            </p>
 
-    <div id="container">
-        <div class="inner">
-            <div id="content">
-
-                <div id="home" class="content-region">
-                    <h2>Welcome</h2>
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Bare-Bones Shooter</h3>
                     <p>
-                        Hi, I'm Keon Fryson, a Game Developer specializing in gameplay programming and UI design, with experience in Unity and Unreal Engine.
-                        I create engaging player experiences through clean, efficient code and intuitive UI systems. My projects include health bars, pause menus, inventory systems, and stat upgrades. Currently studying Game Development at Full Sail University, graduating September 2025. Passionate about combining creativity and technical skill to bring game worlds to life.
+                        Unreal Engine 5 (Student Assignment)<br>
+                        Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
                     </p>
-                    <!--<h3>My GitHub Projects</h3>
-                    <div id="github-projects"></div>-->
+                    <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
                 </div>
-
-                <div id="about" class="content-region">
-                    <h2>About Me</h2>
+                <div class="project-card">
+                    <h3>RasterSurface 3D Renderer</h3>
                     <p>
-                        I am currently studying Game Development at Full Sail University. I have experience in customer service and sales, and I am skilled in Unity, Unreal, C/C#, and version control. I enjoy coding, playing video games, and drawing.
+                        C++ (Student Assignment)<br>
+                        Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
                     </p>
+                    <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
                 </div>
-
-                <div id="education" class="content-region">
-                    <h2>Education</h2>
-                    <ul>
-                        <li>
-                            <strong>Full Sail University, FL</strong> — Game Development<br>
-                            <em>Jan 2023 – Sep 5</em>
-                        </li>
-                        <li>
-                            <strong>Wilson High School</strong><br>
-                            <em>Sep 2019 – May 2022</em>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="experience" class="content-region">
-                    <h2>Experience</h2>
-                    <ul>
-                        <li>
-                            <strong>Real-Time Selections</strong> – UI/UX & Gameplay Developer (Student Unreal Engine Project)<br>
-                            <em>Jun 2025 – Present</em><br>
-                            • Leading the design and implementation of all UI/UX systems for a real-time strategy game developed in Unreal Engine 5.<br>
-                            • Created interactive HUDs, building placement systems, and resource displays, focusing on intuitive layout and responsive controls.<br>
-                            • Collaborated with the team to prototype and polish gameplay features, including unit selection, command issuing, and feedback systems.<br>
-                            • Contributed to iterative design by incorporating playtester feedback and optimizing UI usability for both keyboard/mouse and potential controller support.<br>
-                            • Worked closely with programmers and designers to ensure seamless integration between gameplay logic and user interface.<br>
-                            • Managed assets and source control using PerForce
-                        </li>
-                        <!--<li>
-                        </li>-->
-                    </ul>
-                </div>
-                <div id="projects" class="content-region">
-                    <h2>Projects</h2>
-                    <ul>
-                        <li>
-                            <strong>Bare-Bones Shooter</strong> – Unreal Engine 5 (Student Assignment)<br>
-                            <em>May 2025 – June 2025</em><br>
-                            • Developed a basic first-person shooter using Unreal Engine 5, focusing on core gameplay systems including shooting mechanics, basic enemy AI, and player controls.<br>
-                            • Utilized Blueprints for rapid iteration and debugging, with scalable architecture for future features like health and pickups.<br>
-                            • Managed assets and source control using GitHub (GitHub Repo).<br>
-                            • <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
-                            <br>
-                            <!-- Video for Bare-Bones Shooter -->
-                            <!--<video width="420" height="236" controls>
-                                <source src="END2502_Video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>-->
-                        </li>
-
-                        <li>
-                            <strong>RasterSurface 3D Renderer</strong> – C++ (Student Assignment)<br>
-                            <em>Oct 2024 – Oct 2024</em><br>
-                            • Used a custom RasterSurface class to render and light a 3D model from scratch in C++.<br>
-                            • Implemented vertex transformations, depth buffering, and per-pixel lighting using matrix math and vector operations.<br>
-                            • Emphasized low-level rendering fundamentals, building a strong understanding of graphics pipelines.<br>
-                            • Managed assets and source control using GitHub<br>
-                            • <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
-                            <br>
-                            <!-- Video for RasterSurface 3D Renderer -->
-                            <!--<video width="420" height="236" controls>
-        <source src="Week4_Video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>-->
-                        </li>
-
-                        <li>
-                            <strong>Shadow-Sentiel</strong> - Unity (Student Assignment)<br>
-                            <em>Jun 2024 - Jul 28</em><br>
-                            • Implemented a sound detection stealth system, allowing enemies to react to player-generated noises.<br>
-                            • Developed multiple enemy types with unique behaviors, including coward NPCs and patrolling guards.<br>
-                            • Created advanced enemy AI with state-driven behaviors such as patrolling, chasing, and fleeing.<br>
-                            • Designed and animated enemy characters, integrating smooth transitions between idle, patrol, and alert states.<br>
-                            • Built modular systems for remaking and customizing enemy logic and animations.<br>
-                            •<a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
-                        </li>
-                    </ul>
-                </div>
-                <div id="skills" class="content-region">
-                    <h2>Technical Skills</h2>
-                    <ul>
-                        <li>Unity</li>
-                        <li>Unreal</li>
-                        <li>C/C#</li>
-                        <li>C++</li>
-                        <li>Version Control: GitHub</li>
-                        <li>Version Control: PerForce</li>
-                        <li>Debugging</li>
-                        <li>Game Programming</li>
-                    </ul>
-                    <h2>Soft Skills</h2>
-                    <ul>
-                        <li>Communication</li>
-                        <li>Teamwork</li>
-                        <li>Problem-solving</li>
-                        <li>Time Management</li>
-                        <li>Customer Service</li>
-                        <li>Adaptability</li>
-                    </ul>
-                    <h2>Achievements</h2>
-                    <ul>
-                        <li>GPA: 3.59</li>
-                    </ul>
-                    <h2>Languages</h2>
-                    <ul>
-                        <li>English</li>
-                    </ul>
-                </div>
-
-                <div id="contact" class="content-region">
-                    <h2>Contact</h2>
+                <div class="project-card">
+                    <h3>Shadow-Sentinel</h3>
                     <p>
-                        📧 <a href="mailto:k.m.fryson112115@gmail.com">k.m.fryson112115@gmail.com</a><br>
-                        🔗 <a href="https://www.linkedin.com/in/keon-fryson-937447300/" target="_blank">LinkedIn</a>
+                        Unity (Student Assignment)<br>
+                        Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
                     </p>
+                    <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
                 </div>
-
             </div>
-        </div>
-    </div>
+        </section>
 
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Bare-Bones Shooter</h3>
+                    <p>
+                        Unreal Engine 5 (Student Assignment)<br>
+                        Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
+                    </p>
+                    <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>RasterSurface 3D Renderer</h3>
+                    <p>
+                        C++ (Student Assignment)<br>
+                        Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
+                    </p>
+                    <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>Shadow-Sentinel</h3>
+                    <p>
+                        Unity (Student Assignment)<br>
+                        Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
+                    </p>
+                    <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile">
+            <h2>Profile</h2>
+
+            <h3>Resume</h3>
+            <hr class="subtitle-line">
+            <p>
+                <a href="FrysonKeonRésumé.pdf" target="_blank" style="color:#00bcd4;font-weight:600;">
+                    &#128196; Download My Resume (PDF)
+                </a>
+            </p>
+            <iframe src="FrysonKeonRésumé.pdf" width="100%" height="500" style="border:1px solid #00bcd4;border-radius:8px;margin-bottom:1.5rem;"></iframe>
+
+            <h3>Education</h3>
+            <hr class="subtitle-line">
+            <ul>
+                <li>
+                    <strong>Full Sail University, FL</strong> &mdash; Game Development<br>
+                    <em>Jan 2023 &ndash; Sep 2025 (Graduated)</em>
+                </li>
+                <li>
+                    <strong>Wilson High School</strong><br>
+                    <em>Sep 2019 &ndash; May 2022</em>
+                </li>
+            </ul><br />
+
+            <h3>Experience</h3>
+            <hr class="subtitle-line">
+            <ul>
+                <li>
+                    <strong>Real-Time Selections</strong> &mdash; UI/UX & Gameplay Developer (Student Unreal Engine Project)<br>
+                    <em>Jun 2025 &ndash; Present</em><br>
+                    &bull; Led design and implementation of UI/UX systems for a real-time strategy game in Unreal Engine 5.<br>
+                    &bull; Created interactive HUDs, building placement, and resource displays.<br>
+                    &bull; Prototyped and polished gameplay features, including unit selection and command systems.<br>
+                    &bull; Incorporated playtester feedback and optimized UI usability.<br>
+                    &bull; Managed assets and source control using PerForce.
+                </li>
+            </ul><br />
+
+            <h3>Technical Skills</h3>
+            <hr class="subtitle-line"><br />
+            <div class="skills-list">
+                <span class="skill">Unity</span>
+                <span class="skill">Unreal Engine</span>
+                <span class="skill">C/C#</span>
+                <span class="skill">C++</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">PerForce</span>
+                <span class="skill">Debugging</span>
+                <span class="skill">Game Programming</span>
+
+            </div><br />
+
+            <h3>Soft Skills</h3>
+            <hr class="subtitle-line"> <br />
+            <div class="soft-skills-list">
+                <span class="soft-skill">Communication</span>
+                <span class="soft-skill">Teamwork</span>
+                <span class="soft-skill">Problem-solving</span>
+                <span class="soft-skill">Time Management</span>
+                <span class="soft-skill">Customer Service</span>
+                <span class="soft-skill">Adaptability</span>
+            </div><br />
+
+            <h3>Achievements</h3>
+            <hr class="subtitle-line">
+            <div class="achievements-list">
+                <span class="achievement">GPA: 3.59</span>
+            </div><br />
+
+            <h3>Languages</h3>
+            <hr class="subtitle-line">
+            <div class="languages-list">
+                <span class="language">English</span>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contactForm" novalidate style="max-width:400px;margin:0 auto;">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" name="name" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" name="email" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactPhone">Your Phone</label>
+                <input type="text" id="contactPhone" name="phone" maxlength="14" inputmode="numeric" placeholder="(123) 456-7890" style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" rows="4" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;"></textarea>
+                <button type="submit" style="margin-top:15px;background:#007BFF;color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;width:100%;">Send</button>
+            </form><br />
+            <div id="contactResult" style="margin-top:10px;text-align:center;font-weight:bold;"></div>
+            <p>
+                &#128231; <a href="mailto:k.m.fryson112115@gmail.com">k.m.fryson112115@gmail.com</a><br>
+                &#128279; <a href="https://www.linkedin.com/in/keon-fryson-937447300/" target="_blank">LinkedIn</a>
+            </p>
+        </section>
+    </main>
     <footer>
         &copy; 2025 Keon Fryson. All rights reserved.
     </footer>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("✅ Script loaded"); // Debug check
+
+            // Show only Home on page load
+            $('section').hide();
+            $('#home').show();
+
+            // Handle nav clicks
+            $('header nav a').on('click', function (e) {
+                var target = $(this).attr('href');
+
+                if (target.startsWith('#')) {
+                    e.preventDefault();
+
+                    // Hide all, then show the clicked section
+                    $('section').hide();
+                    $(target).fadeIn(300);
+
+                    // Smooth scroll
+                    var $target = $(target);
+                    if ($target.length) {
+                        $('html, body').animate({
+                            scrollTop: $target.offset().top
+                        }, 600);
+                    }
+                }
+            });
+        });
+
+        // Contact Modal Logic
+        $(function () {
+
+            // Phone input formatting
+            $('#contactPhone').on('input', function (e) {
+                let value = $(this).val().replace(/\D/g, '').slice(0, 10);
+                let formatted = '';
+                if (value.length > 0) formatted = '(' + value.slice(0, 3);
+                if (value.length >= 4) formatted += ') ' + value.slice(3, 6);
+                if (value.length >= 7) formatted += '-' + value.slice(6, 10);
+                $(this).val(formatted);
+            });
+
+            // Form submission with Web3Forms
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+                if (!this.checkValidity()) {
+                    this.reportValidity();
+                    return;
+                }
+                $('#contactResult').text('Sending...').css('color', '');
+
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('access_key', '8b4081ef-d1fd-453f-8355-87fc76e4f870'); // <-- Replace with your key!
+                formData.append('subject', 'New Contact Message from Portfolio');
+                formData.append('name', $('#contactName').val());
+                formData.append('email', $('#contactEmail').val());
+                formData.append('phone', $('#contactPhone').val());
+                formData.append('message', $('#contactMessage').val());
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(async response => {
+                        const json = await response.json();
+                        if (response.ok && json.success) {
+                            $('#contactResult').text('Message sent! Thank you.').css('color', 'green');
+                            $('#contactForm')[0].reset();
+                        } else {
+                            $('#contactResult').text(json.message || 'Failed to send message.').css('color', 'red');
+                        }
+                    })
+                    .catch(() => {
+                        $('#contactResult').text('Something went wrong. Please try again.').css('color', 'red');
+                    });
+            });
+        });
+    </script>
 
 </body>
 </html>
