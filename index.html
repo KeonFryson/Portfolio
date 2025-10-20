@@ -107,7 +107,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg" controls>
                             <source src="projects/bare-bones-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg" controls>
                             <source src="projects/raster-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
@@ -144,7 +144,7 @@
                 <!-- Shadow-Sentinel project card (links to live site) -->
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg" controls>
                             <source src="projects/shadow-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
@@ -168,7 +168,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg" controls>
                             <source src="projects/bare-bones-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg" controls>
                             <source src="projects/raster-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
@@ -205,7 +205,7 @@
                 <!-- Shadow-Sentinel project card (duplicate in second list) -->
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg" controls>
                             <source src="projects/shadow-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
@@ -324,7 +324,6 @@
         &copy; 2025 Keon Fryson. All rights reserved.
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
         $(document).ready(function () {
             console.log("✅ Script loaded"); // Debug check
@@ -430,13 +429,24 @@
                 }
             });
 
-            // Pause videos when navigating away (optional)
+            // Pause videos when navigating away
             $('header nav a').on('click', function () {
-                $('.project-video').each(function () {
-                    this.pause();
-                    $(this).hide();
-                    $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
-                });
+                var href = $(this).attr('href') || '';
+                // If navigating between internal sections, pause videos but keep posters visible
+                if (href.startsWith('#')) {
+                    $('.project-video').each(function () {
+                        this.pause();
+                        // leave the element visible so poster remains visible; reset button label
+                        $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                    });
+                } else {
+                    // For external navigation, pause and hide videos
+                    $('.project-video').each(function () {
+                        this.pause();
+                        $(this).hide();
+                        $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                    });
+                }
             });
         });
     </script>
