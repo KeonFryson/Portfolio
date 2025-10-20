@@ -29,20 +29,12 @@
             background: transparent;
         }
 
-        /* Removed image thumbnails: videos show poster as preview by default */
-        .project-media {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            display: none; /* images removed; keep for backwards compatibility */
-            background: transparent;
-        }
-
+        /* Use the video element poster as preview — no separate thumbnails */
         .project-video {
             width: 100%;
             height: auto;
             border-radius: 6px;
-            display: block; /* show poster/frame by default instead of separate thumbnails */
+            display: block; /* show poster/frame by default */
             margin-top: .5rem;
             background: transparent;
             object-fit: cover;
@@ -107,7 +99,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
                             <source src="projects/bare-bones-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
@@ -125,7 +117,7 @@
                 </div>
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
                             <source src="projects/raster-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
@@ -144,7 +136,7 @@
                 <!-- Shadow-Sentinel project card (links to live site) -->
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
                             <source src="projects/shadow-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
@@ -168,7 +160,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
                             <source src="projects/bare-bones-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
@@ -186,7 +178,7 @@
                 </div>
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
                             <source src="projects/raster-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
@@ -205,7 +197,7 @@
                 <!-- Shadow-Sentinel project card (duplicate in second list) -->
                 <div class="project-card">
                     <div class="media-wrapper">
-                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg" controls>
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
                             <source src="projects/shadow-demo.mp4" type="video/mp4">
                             Your browser does not support embedded videos.
                             <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
@@ -332,24 +324,38 @@
             $('section').hide();
             $('#home').show();
 
-            // Handle nav clicks
+            // Ensure video elements show poster frame and have controls disabled
+            $('.project-video').each(function () {
+                this.pause();
+                this.currentTime = 0;
+                $(this).prop('controls', false);
+                $(this).show();
+            });
+
+            // Handle nav clicks: show section and pause videos (leave poster visible)
             $('header nav a').on('click', function (e) {
                 var target = $(this).attr('href');
 
-                if (target.startsWith('#')) {
+                if (target && target.startsWith('#')) {
                     e.preventDefault();
 
-                    // Hide all, then show the clicked section
                     $('section').hide();
                     $(target).fadeIn(300);
 
-                    // Smooth scroll
                     var $target = $(target);
                     if ($target.length) {
                         $('html, body').animate({
                             scrollTop: $target.offset().top
                         }, 600);
                     }
+
+                    // Pause all videos and disable controls so posters show
+                    $('.project-video').each(function () {
+                        this.pause();
+                        this.currentTime = 0;
+                        $(this).prop('controls', false);
+                        $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                    });
                 }
             });
 
@@ -372,7 +378,6 @@
                 }
                 $('#contactResult').text('Sending...').css('color', '');
 
-                // Prepare form data
                 const formData = new FormData();
                 formData.append('access_key', '8b4081ef-d1fd-453f-8355-87fc76e4f870'); // <-- Replace with your key!
                 formData.append('subject', 'New Contact Message from Portfolio');
@@ -399,53 +404,39 @@
                     });
             });
 
-            // Demo toggle logic: show/hide video, pause others
+            // Demo toggle: enable controls and play; stopping disables controls and resets to poster
             $('.toggle-demo').on('click', function () {
-                // find the closest project-card and its video
                 var $card = $(this).closest('.project-card');
-                var $video = $card.find('.project-video');
+                var video = $card.find('.project-video').get(0);
 
-                // Pause and hide any other visible videos
-                $('.project-video').not($video).each(function () {
+                // Pause other videos and reset them to poster state
+                $('.project-video').not(video).each(function () {
                     this.pause();
-                    $(this).hide();
+                    this.currentTime = 0;
+                    $(this).prop('controls', false);
                     $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
                 });
 
-                // Toggle this video
-                if ($video.is(':visible') && !$video.get(0).paused) {
-                    $video.get(0).pause();
-                    $(this).text('Play Demo');
-                } else {
-                    $video.show();
-                    $video.get(0).currentTime = 0;
-                    $video.get(0).play();
+                if (!video) return;
+
+                if (video.paused) {
+                    // start this video
+                    $(video).prop('controls', true);
+                    video.currentTime = 0;
+                    video.play().catch(function (err) {
+                        console.warn('Video play prevented:', err);
+                    });
                     $(this).text('Hide Demo');
-
-                    // scroll to the video so user sees it (works after nav show)
+                    // scroll to the video so user sees it
                     $('html, body').animate({
-                        scrollTop: $video.offset().top - 20
+                        scrollTop: $(video).offset().top - 20
                     }, 400);
-                }
-            });
-
-            // Pause videos when navigating away
-            $('header nav a').on('click', function () {
-                var href = $(this).attr('href') || '';
-                // If navigating between internal sections, pause videos but keep posters visible
-                if (href.startsWith('#')) {
-                    $('.project-video').each(function () {
-                        this.pause();
-                        // leave the element visible so poster remains visible; reset button label
-                        $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
-                    });
                 } else {
-                    // For external navigation, pause and hide videos
-                    $('.project-video').each(function () {
-                        this.pause();
-                        $(this).hide();
-                        $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
-                    });
+                    // stop and return to poster frame
+                    video.pause();
+                    video.currentTime = 0;
+                    $(video).prop('controls', false);
+                    $(this).text('Play Demo');
                 }
             });
         });
