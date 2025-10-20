@@ -1,133 +1,445 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<!doctype html>
+<html>
+<head>
+    <!-- Page setup -->
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Shadow Sentinel</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-logo-title-footer"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Shadow Sentinel</div>
-      </div>
-    </div>
+    <title>Keon Fryson | Programmer Portfolio</title>
+    <meta name="description" content="Portfolio of Keon Fryson, Game Developer and UI/UX">
+    <meta name="author" content="Keon Fryson">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Small local styles for project media (keeps changes minimal) -->
+    <style>
+        .project-card {
+            padding: 1rem;
+            border-radius: 8px;
+            background: inherit; /* no white — use page/background color */
+            border: 1px solid rgba(0,0,0,0.06); /* subtle separation that works on dark/light */
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+        }
+
+        .media-wrapper {
+            margin-bottom: 0.75rem;
+            background: transparent;
+        }
+
+        /* Removed image thumbnails: videos show poster as preview by default */
+        .project-media {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: none; /* images removed; keep for backwards compatibility */
+            background: transparent;
+        }
+
+        .project-video {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block; /* show poster/frame by default instead of separate thumbnails */
+            margin-top: .5rem;
+            background: transparent;
+            object-fit: cover;
+            max-height: 360px;
+        }
+
+        .demo-controls {
+            margin-top: .5rem;
+            display: flex;
+            gap: .5rem;
+        }
+
+            .demo-controls .toggle-demo {
+                flex: 1;
+                padding: 10px;
+                border-radius: 6px;
+                border: none;
+                background: #00bcd4;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .demo-controls .demo-link {
+                flex: 1;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #00bcd4;
+                background: transparent;
+                color: #00bcd4;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+    </style>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <img src="Profile.jpg" alt="Profile Photo">
+        <h1>Keon Fryson</h1>
+        <h3>Game Developer & Programmer</h3>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm Keon Fryson.
+                I’m a Game Developer specializing in gameplay programming and UI functionality with experience in Unity and Unreal Engine. I focus on building clean, efficient systems that create engaging player experiences, such as health bars, pause menus, inventory systems, and stat upgrades. I graduated with a Game Development degree from Full Sail University in September 2025. I’m passionate about combining technical skill and creativity to bring game worlds to life through code.
+            </p>
+
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                            <source src="projects/bare-bones-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3>Bare-Bones Shooter</h3>
+                    <p>
+                        Unreal Engine 5 (Student Assignment)<br>
+                        Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="bare-bones">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                            <source src="projects/raster-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3>RasterSurface 3D Renderer</h3>
+                    <p>
+                        C++ (Student Assignment)<br>
+                        Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="raster">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                <!-- Shadow-Sentinel project card (links to live site) -->
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                            <source src="projects/shadow-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3><a href="https://keonfryson.com/Shadow/" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Shadow-Sentinel</a></h3>
+                    <p>
+                        Unity (Student Assignment)<br>
+                        Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
+                    </p>
+                    <div class="demo-controls">
+                        <a class="demo-link" href="https://keonfryson.com/Shadow/" target="_blank" rel="noopener">Play in Browser</a>
+                        <a class="demo-link" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                            <source src="projects/bare-bones-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3>Bare-Bones Shooter</h3>
+                    <p>
+                        Unreal Engine 5 (Student Assignment)<br>
+                        Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="bare-bones">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                            <source src="projects/raster-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3>RasterSurface 3D Renderer</h3>
+                    <p>
+                        C++ (Student Assignment)<br>
+                        Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="raster">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+                <!-- Shadow-Sentinel project card (duplicate in second list) -->
+                <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                            <source src="projects/shadow-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3><a href="https://keonfryson.com/Shadow/" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Shadow-Sentinel</a></h3>
+                    <p>
+                        Unity (Student Assignment)<br>
+                        Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
+                    </p>
+                    <div class="demo-controls">
+                        <a class="demo-link" href="https://keonfryson.com/Shadow/" target="_blank" rel="noopener">Play in Browser</a>
+                        <a class="demo-link" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile">
+            <h2>Profile</h2>
+
+            <h3>Resume</h3>
+            <hr class="subtitle-line">
+            <p>
+                <a href="FrysonKeonRésumé.pdf" target="_blank" style="color:#00bcd4;font-weight:600;">
+                    &#128196; Download My Resume (PDF)
+                </a>
+            </p>
+            <iframe src="FrysonKeonRésumé.pdf" width="100%" height="500" style="border:1px solid #00bcd4;border-radius:8px;margin-bottom:1.5rem;"></iframe>
+
+            <h3>Education</h3>
+            <hr class="subtitle-line">
+            <ul>
+                <li>
+                    <strong>Full Sail University, FL</strong> &mdash; Game Development<br>
+                    <em>Jan 2023 &ndash; Sep 2025 (Graduated)</em>
+                </li>
+                <li>
+                    <strong>Wilson High School</strong><br>
+                    <em>Sep 2019 &ndash; May 2022</em>
+                </li>
+            </ul><br />
+
+            <h3>Experience</h3>
+            <hr class="subtitle-line">
+            <ul>
+                <li>
+                    <strong>Real-Time Selections</strong> &mdash; UI/UX & Gameplay Developer (Student Unreal Engine Project)<br>
+                    <em>Jun 2025 &ndash; Present</em><br>
+                    &bull; Led design and implementation of UI/UX systems for a real-time strategy game in Unreal Engine 5.<br>
+                    &bull; Created interactive HUDs, building placement, and resource displays.<br>
+                    &bull; Prototyped and polished gameplay features, including unit selection and command systems.<br>
+                    &bull; Incorporated playtester feedback and optimized UI usability.<br>
+                    &bull; Managed assets and source control using PerForce.
+                </li>
+            </ul><br />
+
+            <h3>Technical Skills</h3>
+            <hr class="subtitle-line"><br />
+            <div class="skills-list">
+                <span class="skill">Unity</span>
+                <span class="skill">Unreal Engine</span>
+                <span class="skill">C/C#</span>
+                <span class="skill">C++</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">PerForce</span>
+                <span class="skill">Debugging</span>
+                <span class="skill">Game Programming</span>
+
+            </div><br />
+
+            <h3>Soft Skills</h3>
+            <hr class="subtitle-line"> <br />
+            <div class="soft-skills-list">
+                <span class="soft-skill">Communication</span>
+                <span class="soft-skill">Teamwork</span>
+                <span class="soft-skill">Problem-solving</span>
+                <span class="soft-skill">Time Management</span>
+                <span class="soft-skill">Customer Service</span>
+                <span class="soft-skill">Adaptability</span>
+            </div><br />
+
+            <h3>Achievements</h3>
+            <hr class="subtitle-line">
+            <div class="achievements-list">
+                <span class="achievement">GPA: 3.59</span>
+            </div><br />
+
+            <h3>Languages</h3>
+            <hr class="subtitle-line">
+            <div class="languages-list">
+                <span class="language">English</span>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contactForm" novalidate style="max-width:400px;margin:0 auto;">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" name="name" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" name="email" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactPhone">Your Phone</label>
+                <input type="text" id="contactPhone" name="phone" maxlength="14" inputmode="numeric" placeholder="(123) 456-7890" style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" rows="4" required style="width:100%;padding:8px;margin-top:4px;border-radius:5px;border:1px solid #ccc;"></textarea>
+                <button type="submit" style="margin-top:15px;background:#007BFF;color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;width:100%;">Send</button>
+            </form><br />
+            <div id="contactResult" style="margin-top:10px;text-align:center;font-weight:bold;"></div>
+            <p>
+                &#128231; <a href="mailto:k.m.fryson112115@gmail.com">k.m.fryson112115@gmail.com</a><br>
+                &#128279; <a href="https://www.linkedin.com/in/keon-fryson-937447300/" target="_blank">LinkedIn</a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Keon Fryson. All rights reserved.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-      var canvas = document.querySelector("#unity-canvas");
+        $(document).ready(function () {
+            console.log("✅ Script loaded"); // Debug check
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+            // Show only Home on page load
+            $('section').hide();
+            $('#home').show();
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Portfolio.loader.js";
-      var config = {
-        arguments: [],
-        dataUrl: buildUrl + "/Portfolio.data.unityweb",
-        frameworkUrl: buildUrl + "/Portfolio.framework.js.unityweb",
-        codeUrl: buildUrl + "/Portfolio.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "UX",
-        productName: "Shadow Sentinel",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-        // errorHandler: function(err, url, line) {
-        //    alert("error " + err + " occurred at line " + line);
-        //    // Return 'true' if you handled this error and don't want Unity
-        //    // to process it further, 'false' otherwise.
-        //    return true;
-        // },
-      };
+            // Handle nav clicks
+            $('header nav a').on('click', function (e) {
+                var target = $(this).attr('href');
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+                if (target.startsWith('#')) {
+                    e.preventDefault();
 
-      // If you would like all file writes inside Unity Application.persistentDataPath
-      // directory to automatically persist so that the contents are remembered when
-      // the user revisits the site the next time, uncomment the following line:
-      // config.autoSyncPersistentDataPath = true;
-      // This autosyncing is currently not the default behavior to avoid regressing
-      // existing user projects that might rely on the earlier manual
-      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
-      // expected to change.
+                    // Hide all, then show the clicked section
+                    $('section').hide();
+                    $(target).fadeIn(300);
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+                    // Smooth scroll
+                    var $target = $(target);
+                    if ($target.length) {
+                        $('html, body').animate({
+                            scrollTop: $target.offset().top
+                        }, 600);
+                    }
+                }
+            });
 
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-container").className = "unity-mobile";
-        canvas.className = "unity-mobile";
+            // Phone input formatting
+            $('#contactPhone').on('input', function (e) {
+                let value = $(this).val().replace(/\D/g, '').slice(0, 10);
+                let formatted = '';
+                if (value.length > 0) formatted = '(' + value.slice(0, 3);
+                if (value.length >= 4) formatted += ') ' + value.slice(3, 6);
+                if (value.length >= 7) formatted += '-' + value.slice(6, 10);
+                $(this).val(formatted);
+            });
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+            // Form submission with Web3Forms
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+                if (!this.checkValidity()) {
+                    this.reportValidity();
+                    return;
+                }
+                $('#contactResult').text('Sending...').css('color', '');
 
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('access_key', '8b4081ef-d1fd-453f-8355-87fc76e4f870'); // <-- Replace with your key!
+                formData.append('subject', 'New Contact Message from Portfolio');
+                formData.append('name', $('#contactName').val());
+                formData.append('email', $('#contactEmail').val());
+                formData.append('phone', $('#contactPhone').val());
+                formData.append('message', $('#contactMessage').val());
 
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(async response => {
+                        const json = await response.json();
+                        if (response.ok && json.success) {
+                            $('#contactResult').text('Message sent! Thank you.').css('color', 'green');
+                            $('#contactForm')[0].reset();
+                        } else {
+                            $('#contactResult').text(json.message || 'Failed to send message.').css('color', 'red');
+                        }
+                    })
+                    .catch(() => {
+                        $('#contactResult').text('Something went wrong. Please try again.').css('color', 'red');
+                    });
+            });
 
-      document.querySelector("#unity-loading-bar").style.display = "block";
+            // Demo toggle logic: show/hide video, pause others
+            $('.toggle-demo').on('click', function () {
+                // find the closest project-card and its video
+                var $card = $(this).closest('.project-card');
+                var $video = $card.find('.project-video');
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
+                // Pause and hide any other visible videos
+                $('.project-video').not($video).each(function () {
+                    this.pause();
+                    $(this).hide();
+                    $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                });
 
-              }).catch((message) => {
-                alert(message);
-              });
-            };
+                // Toggle this video
+                if ($video.is(':visible') && !$video.get(0).paused) {
+                    $video.get(0).pause();
+                    $(this).text('Play Demo');
+                } else {
+                    $video.show();
+                    $video.get(0).currentTime = 0;
+                    $video.get(0).play();
+                    $(this).text('Hide Demo');
 
-      document.body.appendChild(script);
+                    // scroll to the video so user sees it (works after nav show)
+                    $('html, body').animate({
+                        scrollTop: $video.offset().top - 20
+                    }, 400);
+                }
+            });
 
+            // Pause videos when navigating away (optional)
+            $('header nav a').on('click', function () {
+                $('.project-video').each(function () {
+                    this.pause();
+                    $(this).hide();
+                    $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                });
+            });
+        });
     </script>
-  </body>
+
+</body>
 </html>
