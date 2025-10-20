@@ -14,6 +14,71 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
 
+    <!-- Small local styles for project media (keeps changes minimal) -->
+    <style>
+        .project-card {
+            padding: 1rem;
+            border-radius: 8px;
+            background: inherit; /* no white — use page/background color */
+            border: 1px solid rgba(0,0,0,0.06); /* subtle separation that works on dark/light */
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+        }
+
+        .media-wrapper {
+            margin-bottom: 0.75rem;
+            background: transparent;
+        }
+
+        /* Removed image thumbnails: videos show poster as preview by default */
+        .project-media {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: none; /* images removed; keep for backwards compatibility */
+            background: transparent;
+        }
+
+        .project-video {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block; /* show poster/frame by default instead of separate thumbnails */
+            margin-top: .5rem;
+            background: transparent;
+            object-fit: cover;
+            max-height: 360px;
+        }
+
+        .demo-controls {
+            margin-top: .5rem;
+            display: flex;
+            gap: .5rem;
+        }
+
+            .demo-controls .toggle-demo {
+                flex: 1;
+                padding: 10px;
+                border-radius: 6px;
+                border: none;
+                background: #00bcd4;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .demo-controls .demo-link {
+                flex: 1;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #00bcd4;
+                background: transparent;
+                color: #00bcd4;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+    </style>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
@@ -41,28 +106,59 @@
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                            <source src="projects/bare-bones-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
                     <h3>Bare-Bones Shooter</h3>
                     <p>
                         Unreal Engine 5 (Student Assignment)<br>
                         Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
                     </p>
-                    <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="bare-bones">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
                 <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                            <source src="projects/raster-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
                     <h3>RasterSurface 3D Renderer</h3>
                     <p>
                         C++ (Student Assignment)<br>
                         Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
                     </p>
-                    <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="raster">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
+                <!-- Shadow-Sentinel project card (links to live site) -->
                 <div class="project-card">
-                    <h3>Shadow-Sentinel</h3>
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                            <source src="projects/shadow-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3><a href="https://keonfryson.com/Shadow/" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Shadow-Sentinel</a></h3>
                     <p>
                         Unity (Student Assignment)<br>
                         Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
                     </p>
-                    <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <a class="demo-link" href="https://keonfryson.com/Shadow/" target="_blank" rel="noopener">Play in Browser</a>
+                        <a class="demo-link" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -71,28 +167,59 @@
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/bare-bones-thumbnail.jpg">
+                            <source src="projects/bare-bones-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/bare-bones-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
                     <h3>Bare-Bones Shooter</h3>
                     <p>
                         Unreal Engine 5 (Student Assignment)<br>
                         Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.
                     </p>
-                    <a href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="bare-bones">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/END2502" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
                 <div class="project-card">
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/raster-thumbnail.jpg">
+                            <source src="projects/raster-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/raster-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
                     <h3>RasterSurface 3D Renderer</h3>
                     <p>
                         C++ (Student Assignment)<br>
                         Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.
                     </p>
-                    <a href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <button class="toggle-demo" data-target="raster">Play Demo</button>
+                        <a class="demo-link" href="https://github.com/KeonFryson/Week-4" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
+                <!-- Shadow-Sentinel project card (duplicate in second list) -->
                 <div class="project-card">
-                    <h3>Shadow-Sentinel</h3>
+                    <div class="media-wrapper">
+                        <video class="project-video" preload="metadata" poster="projects/shadow-thumbnail.jpg">
+                            <source src="projects/shadow-demo.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                            <a href="projects/shadow-demo.mp4" target="_blank">Open demo</a>
+                        </video>
+                    </div>
+                    <h3><a href="https://keonfryson.com/Shadow/" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Shadow-Sentinel</a></h3>
                     <p>
                         Unity (Student Assignment)<br>
                         Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.
                     </p>
-                    <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank">View on GitHub</a>
+                    <div class="demo-controls">
+                        <a class="demo-link" href="https://keonfryson.com/Shadow/" target="_blank" rel="noopener">Play in Browser</a>
+                        <a class="demo-link" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -226,10 +353,6 @@
                     }
                 }
             });
-        });
-
-        // Contact Modal Logic
-        $(function () {
 
             // Phone input formatting
             $('#contactPhone').on('input', function (e) {
@@ -275,6 +398,45 @@
                     .catch(() => {
                         $('#contactResult').text('Something went wrong. Please try again.').css('color', 'red');
                     });
+            });
+
+            // Demo toggle logic: show/hide video, pause others
+            $('.toggle-demo').on('click', function () {
+                // find the closest project-card and its video
+                var $card = $(this).closest('.project-card');
+                var $video = $card.find('.project-video');
+
+                // Pause and hide any other visible videos
+                $('.project-video').not($video).each(function () {
+                    this.pause();
+                    $(this).hide();
+                    $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                });
+
+                // Toggle this video
+                if ($video.is(':visible') && !$video.get(0).paused) {
+                    $video.get(0).pause();
+                    $(this).text('Play Demo');
+                } else {
+                    $video.show();
+                    $video.get(0).currentTime = 0;
+                    $video.get(0).play();
+                    $(this).text('Hide Demo');
+
+                    // scroll to the video so user sees it (works after nav show)
+                    $('html, body').animate({
+                        scrollTop: $video.offset().top - 20
+                    }, 400);
+                }
+            });
+
+            // Pause videos when navigating away (optional)
+            $('header nav a').on('click', function () {
+                $('.project-video').each(function () {
+                    this.pause();
+                    $(this).hide();
+                    $(this).closest('.project-card').find('.toggle-demo').text('Play Demo');
+                });
             });
         });
     </script>

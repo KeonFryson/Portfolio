@@ -1,6 +1,0 @@
-name = "portfolio"
-main = "index.html"
-compatibility_date = "2025-08-17"
-
-[site]
-bucket = "."
