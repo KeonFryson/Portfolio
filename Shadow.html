@@ -48,6 +48,9 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.04);
             box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .player-iframe {
@@ -78,37 +81,43 @@
 
     <main>
         <div class="player-wrap" id="playerWrap">
-            <!-- Replace build/index.html with the actual path to your WebGL build entry -->
-            <iframe id="gameFrame" class="player-iframe" src="build/index.html" allow="autoplay; fullscreen"></iframe>
+            <!-- itch.io embed (fixed size as requested) -->
+            <iframe id="gameFrame"
+                    width="552"
+                    height="167"
+                    frameborder="0"
+                    src="https://itch.io/embed/3975076">
+                <a href="https://order112115.itch.io/shadow-sentinel">Shadow Sentinel by Order112115</a>
+            </iframe>
         </div>
     </main>
 
     <div class="fallback" id="fallback" style="display:none;">
-        The in-browser build couldn't load. You can:
+        The embed didn't load. You can:
         <ul style="list-style: none; padding-left: 0;">
-            <li><a href="build/index.html" style="color:#00bcd4;" target="_blank">Open the Web build directly</a></li>
+            <li><a href="https://order112115.itch.io/shadow-sentinel" style="color:#00bcd4;" target="_blank">Open on itch.io</a></li>
             <li><a href="https://github.com/Devonflynn96/Shadow-Sentinel" style="color:#00bcd4;" target="_blank">Open project on GitHub</a></li>
         </ul>
     </div>
 
     <script>
-    // If the iframe fails to load (e.g. missing build), show fallback after timeout
+        // If the iframe fails to load (e.g. blocked or slow), show fallback after timeout
         (function () {
             var iframe = document.getElementById('gameFrame');
             var fallback = document.getElementById('fallback');
+            var playerWrap = document.getElementById('playerWrap');
+
             var timeout = setTimeout(function () {
-                // check if iframe loaded by probing contentWindow (may be cross-origin; rely on timeout)
-                // If the iframe hasn't visually loaded within 6s assume missing build and show fallback link
                 fallback.style.display = 'block';
-                document.getElementById('playerWrap').style.display = 'none';
+                playerWrap.style.display = 'none';
             }, 6000);
 
             iframe.addEventListener('load', function () {
                 clearTimeout(timeout);
-                // hide fallback if it appeared
                 fallback.style.display = 'none';
-                document.getElementById('playerWrap').style.display = 'block';
+                playerWrap.style.display = 'flex';
             });
-        })();</script>
+        })();
+    </script>
 </body>
 </html>
