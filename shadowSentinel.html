@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <a class="back" href="projects.html">&larr; Back</a>
-        <div class="hero"><img src="/projects/shadow-sentinel.jpg" alt="Shadow-Sentinel"></div>
+        <div class="hero"><img src="projects/shadow-sentinel.jpg" alt="Shadow-Sentinel"></div>
         <div class="title">Shadow-Sentinel</div>
 
         <div class="cols">
@@ -78,14 +78,44 @@
             </div>
             <div class="col">
                 <h4>Project Info</h4>
-                <ul><li>Engine: Unity</li><li>Student Assignment</li></ul>
+                <ul><li>Engine: Unity</li><li>Student Assignment</li><li>Role: Gameplay Dev</li><li>Team Number: 4</li></ul>
             </div>
         </div>
 
         <section style="margin-top:18px;">
             <h3>Details</h3>
-            <p>Full write-up, screenshots and links go here.</p>
-            <p><a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a></p>
+
+            <p>This was my first real game project for a class at Full Sail. The assignment was to build a small stealth prototype — I wanted enemies to feel believable and react to the noises the player makes.</p>
+
+            <h4>My role</h4>
+            <p>I was the Gameplay Developer: I implemented player movement, the minimap, player and enemy animations, the enemy AI, and the sound detection system. It was a small team project and I picked up many practical Unity skills.</p>
+
+            <h4>What I worked on</h4>
+            <ul>
+                <li>Player systems — movement, input handling, and animation blending so the character feels responsive.</li>
+                <li>Minimap — a simple UI minimap to help with navigation and awareness in tight levels.</li>
+                <li>Sound detection — footsteps and actions generate configurable noise that can alert nearby enemies.</li>
+                <li>Enemy AI — patrols, sight cones, investigation behavior and alert/chase states driven by a basic FSM.</li>
+                <li>Enemy animations — transitions and state-driven animations for patrol, alert, and chase.</li>
+            </ul>
+
+            <h4>Technical notes</h4>
+            <ul>
+                <li>I used a Finite State Machine for enemy states and added hooks so behavior could be changed without rewriting core logic.</li>
+                <li>Detection uses a combination of noise radii and line‑of‑sight checks — this helped balance stealth and fairness.</li>
+                <li>Animator controllers and blend trees were used to keep player/enemy motion smooth.</li>
+                <li>To keep performance reasonable I used lightweight update loops and pooled short‑lived objects (like sound markers/effects).</li>
+            </ul>
+
+            <h4>Challenges & what I learned</h4>
+            <p>Tuning detection ranges and timing was harder than I expected — small numbers made the game frustrating, large numbers made it too easy. I learned to use debug gizmos and logs to visualize AI perception. Working in a small team taught me practical Git workflows and how to divide features. Overall I learned a lot about Unity's animation system, scripting gameplay behavior in C#, and iterating quickly on playfeel.</p>
+
+
+            <p>
+                <a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a>
+                &nbsp;|&nbsp;
+                <a href="https://order112115.itch.io/shadow-sentinel" target="_blank" rel="noopener" style="color:#00bcd4">Play on itch.io</a>
+            </p>
         </section>
     </div>
 </body>
