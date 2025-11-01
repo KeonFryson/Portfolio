@@ -1,12 +1,7 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-section {
-    display: none;
 }
 
 body {
@@ -63,7 +58,9 @@ main {
     padding: 0 1rem;
 }
 
+/* Make sections visible and give spacing */
 section {
+    display: block;
     margin-bottom: 3rem;
 }
 
@@ -173,4 +170,3 @@ footer {
         margin: 0 0.5rem;
     }
 }
-

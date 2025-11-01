@@ -2,122 +2,91 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Shadow-Sentinel — Play in Browser</title>
+    <title>Shadow-Sentinel — Keon Fryson</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <style>
         body {
-            margin: 0;
-            font-family: Roboto, Arial, sans-serif;
-            background: #0f1115;
-            color: #e6eef3;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background: #111;
+            color: #eaeaea;
+            font-family: system-ui,Segoe UI,Arial
         }
 
-        header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        .container {
+            max-width: 980px;
+            margin: 28px auto;
+            padding: 0 18px
         }
 
-            header a.back {
-                color: #00bcd4;
-                text-decoration: none;
-                padding: 8px 12px;
-                border-radius: 6px;
-                border: 1px solid rgba(0,188,212,.15);
-            }
-
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-        }
-
-        .player-wrap {
-            width: 100%;
-            max-width: 1200px;
-            height: 700px;
-            background: #050608;
-            border-radius: 10px;
+        .hero {
+            border-radius: 4px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.04);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: 1px solid #222
         }
 
-        .player-iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-        }
-
-        .fallback {
-            padding: 20px;
-            text-align: center;
-            color: #c0dbe6;
-        }
-
-        @media (max-width:900px) {
-            .player-wrap {
-                height: 62vh;
+            .hero img {
+                width: 100%;
+                display: block;
+                object-fit: cover
             }
+
+        .title {
+            color: #00bcd4;
+            margin: 12px 0;
+            font-size: 20px;
+            font-weight: 700
+        }
+
+        .cols {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px
+        }
+
+        .col {
+            flex: 1;
+            background: #151515;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #222
+        }
+
+        @media(max-width:880px) {
+            .cols {
+                flex-direction: column
+            }
+        }
+
+        a.back {
+            color: #80deea;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-decoration: none
         }
     </style>
 </head>
 <body>
-    <header>
-        <a class="back" href="../index.html">&larr; Back to Portfolio</a>
-        <h1 style="margin:0;font-size:1.2rem;">Shadow-Sentinel — Play in Browser</h1>
-    </header>
+    <div class="container">
+        <a class="back" href="projects.html">&larr; Back</a>
+        <div class="hero"><img src="projects/shadow-sentinel.jpg" alt="Shadow-Sentinel"></div>
+        <div class="title">Shadow-Sentinel</div>
 
-    <main>
-        <div class="player-wrap" id="playerWrap">
-            <!-- itch.io embed (fixed size as requested) -->
-            <iframe id="gameFrame"
-                    width="552"
-                    height="167"
-                    frameborder="0"
-                    src="https://itch.io/embed/3975076">
-                <a href="https://order112115.itch.io/shadow-sentinel">Shadow Sentinel by Order112115</a>
-            </iframe>
+        <div class="cols">
+            <div class="col">
+                <h4>About</h4>
+                <p>Implemented a sound detection stealth system, advanced enemy AI and modular systems for customizing enemy logic and animations.</p>
+            </div>
+            <div class="col">
+                <h4>Project Info</h4>
+                <ul><li>Engine: Unity</li><li>Student Assignment</li></ul>
+            </div>
         </div>
-    </main>
 
-    <div class="fallback" id="fallback" style="display:none;">
-        The embed didn't load. You can:
-        <ul style="list-style: none; padding-left: 0;">
-            <li><a href="https://order112115.itch.io/shadow-sentinel" style="color:#00bcd4;" target="_blank">Open on itch.io</a></li>
-            <li><a href="https://github.com/Devonflynn96/Shadow-Sentinel" style="color:#00bcd4;" target="_blank">Open project on GitHub</a></li>
-        </ul>
+        <section style="margin-top:18px;">
+            <h3>Details</h3>
+            <p>Full write-up, screenshots and links go here.</p>
+            <p><a href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a></p>
+        </section>
     </div>
-
-    <script>
-        // If the iframe fails to load (e.g. blocked or slow), show fallback after timeout
-        (function () {
-            var iframe = document.getElementById('gameFrame');
-            var fallback = document.getElementById('fallback');
-            var playerWrap = document.getElementById('playerWrap');
-
-            var timeout = setTimeout(function () {
-                fallback.style.display = 'block';
-                playerWrap.style.display = 'none';
-            }, 6000);
-
-            iframe.addEventListener('load', function () {
-                clearTimeout(timeout);
-                fallback.style.display = 'none';
-                playerWrap.style.display = 'flex';
-            });
-        })();
-    </script>
 </body>
 </html>
