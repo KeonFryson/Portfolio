@@ -4,15 +4,14 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "portfolio",
-	"main": "src/index.js",
+	"name": "mp3",
 	"compatibility_date": "2025-11-01",
-	"observability": {
-		"enabled": true
-	},
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./public"
+	},
+	"observability": {
+		"enabled": true
 	}
 	/**
 	 * Smart Placement

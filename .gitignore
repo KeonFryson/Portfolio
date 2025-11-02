@@ -165,5 +165,7 @@ dist
 .env*
 !.env.example
 .wrangler/
+
 # Visual Studio
 .vs/
+
