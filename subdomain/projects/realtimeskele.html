@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Real-Time-Skeletons - Keon Fryson</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background: #111;
+            color: #eaeaea;
+            font-family: system-ui,Segoe UI,Arial
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 28px auto;
+            padding: 0 18px
+        }
+
+        .hero {
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #222
+        }
+
+            .hero img {
+                width: 100%;
+                display: block;
+                object-fit: cover
+            }
+
+        .title {
+            color: #00bcd4;
+            margin: 12px 0;
+            font-size: 20px;
+            font-weight: 700
+        }
+
+        .cols {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px
+        }
+
+        .col {
+            flex: 1;
+            background: #151515;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #222
+        }
+
+        @media(max-width:880px) {
+            .cols {
+                flex-direction: column
+            }
+        }
+
+        a.back {
+            color: #80deea;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-decoration: none
+        }
+
+        /* Feature image layout */
+        .feature {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+            .feature.reverse {
+                flex-direction: row-reverse;
+            }
+
+            /* Text column grows, image keeps full frame without being cropped */
+            .feature > div {
+                flex: 1 1 auto;
+            }
+
+            .feature img {
+                flex: 0 0 auto; /* prevent image from shrinking to nothing */
+                max-width: 55%; /* allow image to scale but not exceed this portion */
+                width: auto;
+                height: auto; /* preserve aspect ratio, show whole frame */
+                object-fit: contain; /* don't crop the GIF */
+                border-radius: 4px;
+                border: 1px solid #222;
+            }
+
+        /* Medium screens: slightly larger text / smaller image ratio */
+        @media (max-width:1100px) {
+            .feature img {
+                max-width: 45%;
+            }
+        }
+
+        /* Small screens: stack and full width */
+        @media(max-width:880px) {
+            .feature {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+                .feature.reverse {
+                    flex-direction: column;
+                }
+
+                .feature img {
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="back" href="../../projects.html">&larr; Back</a>
+        <div class="hero">
+            <img src="../../projects/real-time.png" alt="Real-Time-Skeletons">
+        </div>
+        <div class="title">Real-Time-Skeletons</div>
+
+        <div class="cols">
+            <div class="col">
+                <h4>About</h4>
+                <p>Real-Time-Skeletons is a real-time strategy prototype developed with two teammates over eight weeks. I was responsible for the user interface and main menu, and I implemented the base-building mechanics. The prototype was created in Unreal Engine 5 using Blueprints for rapid iteration. Development stopped after the course when the team moved on to other projects.</p>
+            </div>
+            <div class="col">
+                <h4>Project Info</h4>
+                <ul>
+                    <li>Role: Student Project</li>
+                    <li>Engine: Unreal Engine 5</li>
+                    <li>Duration: 8 Weeks</li>
+                    <li>Team Size: 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <section style="margin-top:18px;">
+            <h3>Introduction</h3>
+            <p>This project focused on core RTS systems: UI, base construction, unit control, and game flow. My contributions included the main menu, HUD layouts,Camera movement, and the base-building system used to place and manage structures. The project sources are not publicly available.</p>
+        </section>
+
+        <section style="margin-top:18px;">
+            <h3>Features I implemented</h3>
+
+            <div class="feature reverse">
+                <div>
+                    <h4>Main menu</h4>
+                    <p>Designed and implemented the main menu flow, including start, options and quit actions. Menu layout and navigation were built in UMG (Unreal Motion Graphics) to provide fast access to settings and to bootstrap the game scene cleanly from an entry point.</p>
+                </div>
+                <img src="../../projects/main-menu.gif" alt="Main menu GIF">
+            </div>
+
+            <div class="feature">
+                <div>
+                    <h4>User interface & HUD</h4>
+                    <p>Created HUD layouts and UI elements used during gameplay: resource displays, Building Heath, build/action buttons, and contextual prompts. The HUD was implemented in Blueprints and designed to scale with resolution and anchor correctly to screen edges.</p>
+                </div>
+                <img src="../../projects/ui-hud.gif" alt="User interface and HUD GIF">
+            </div>
+
+            <div class="feature reverse">
+                <div>
+                    <h4>Base-building system</h4>
+                    <p>Implemented the base-building mechanics that let players place and manage structures. The system includes a placement preview (ghost) to preview building position, placement validation to prevent invalid overlap, and basic structure selection/interaction. Core logic and UI integration were implemented with Blueprints for rapid iteration.</p>
+                </div>
+                <img src="../../projects/base-building.gif" alt="Base building GIF">
+            </div>
+
+            <div class="feature">
+                <div>
+                    <h4>Camera movement</h4>
+                    <p>Implemented top-down camera controls for the RTS view. Controls include WASD / arrow-key panning, edge-screen scrolling, mouse-wheel zoom (with clamped min/max distances), and hold-drag pan with the middle mouse button. Movement is smoothed using interpolation and clamped to level bounds to prevent the camera leaving the playable area.</p>
+                </div>
+  
+            </div>
+
+            <h4>UX polish and feedback</h4>
+            <p>Added visual feedback for placement validation and button states (enabled/disabled), and tuned UI spacing and typography to improve clarity during gameplay. These small UX touches make the base-building flow easier to understand and use.</p>
+
+        </section>
+    </div>
+</body>
+</html>
