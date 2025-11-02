@@ -1,5 +1,5 @@
 import indexHtml from './index.html';
- 
+import styleCss from './style.css';
 
 export default {
 	async fetch(request, env) {
@@ -12,6 +12,13 @@ export default {
 			});
 		}
 
+		// Serve stylesheet
+		if (url.pathname === '/style.css') {
+			return new Response(styleCss, {
+				headers: { 'Content-Type': 'text/css; charset=UTF-8' },
+			});
+		}
 
+		return new Response('Not found', { status: 404 });
 	},
 };
