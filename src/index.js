@@ -10,7 +10,7 @@ async function handleEvent(event) {
 
 	// Serve index.html for root
 	if (url.pathname === '/') {
-		const indexReq = new Request(url.origin + '/index.html', req);
+		const indexReq = new Request(new URL('/index.html', req.url).toString(), req);
 		try {
 			return await getAssetFromKV({ request: indexReq, waitUntil: event.waitUntil });
 		} catch (err) {
@@ -18,23 +18,24 @@ async function handleEvent(event) {
 		}
 	}
 
-	// If request path contains no file extension, try path + .html (friendly tabs)
-	if (!url.pathname.includes('.')) {
-		const htmlCandidate = new Request(url.origin + url.pathname.replace(/\/$/, '') + '.html', req);
-		try {
-			return await getAssetFromKV({ request: htmlCandidate, waitUntil: event.waitUntil });
-		} catch (err) {
-			// fall through to try original request
-		}
-	}
-
-	// Default: try to serve the requested asset (CSS, JS, images, HTML with extension)
+	// Try to serve the requested asset (css/js/images/explicit html)
 	try {
-		return await getAssetFromKV(event);
+		return await getAssetFromKV({ request: req, waitUntil: event.waitUntil });
 	} catch (err) {
-		// Final fallback: return index.html (useful for SPA-like use) or show 404
+		// If asset not found and path has no extension, try <path>.html
+		if (!url.pathname.includes('.')) {
+			const htmlPath = url.pathname.replace(/\/$/, '') + '.html';
+			const htmlReq = new Request(new URL(htmlPath, req.url).toString(), req);
+			try {
+				return await getAssetFromKV({ request: htmlReq, waitUntil: event.waitUntil });
+			} catch (e) {
+				// fall through to SPA fallback
+			}
+		}
+
+		// Final fallback: serve index.html (useful for SPA-style navigation)
 		try {
-			const fallback = new Request(url.origin + '/index.html', req);
+			const fallback = new Request(new URL('/index.html', req.url).toString(), req);
 			return await getAssetFromKV({ request: fallback, waitUntil: event.waitUntil });
 		} catch (e) {
 			return new Response('Not found', { status: 404 });
