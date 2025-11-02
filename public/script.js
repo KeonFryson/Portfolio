@@ -1,4 +1,5 @@
-// Lightweight diagnostics & guards
+
+export default `// Lightweight diagnostics & guards
 console.log('script.js loaded');
 window.addEventListener('error', function (e) {
     console.error('Unhandled error:', e.message, e.filename + ':' + e.lineno);
@@ -37,7 +38,7 @@ $(document).ready(function () {
         var $phone = $('#contactPhone');
         if ($phone.length) {
             $phone.on('input', function () {
-                let value = $(this).val().replace(/\D/g, '').slice(0, 10);
+                let value = $(this).val().replace(/\\D/g, '').slice(0, 10);
                 let formatted = '';
                 if (value.length > 0) formatted = '(' + value.slice(0, 3);
                 if (value.length >= 4) formatted += ') ' + value.slice(3, 6);
@@ -122,22 +123,22 @@ $(document).ready(function () {
                         const description = p.description || '';
                         const github = p.github || '#';
 
-                        $projContainer.append(`
-                            <div class="project-card">
-                              <div class="media-wrapper">
-                                <video class="project-video" preload="metadata" poster="${thumb}">
-                                  <source src="${video}" type="video/mp4">
-                                  <a href="${video}" target="_blank">Open demo</a>
-                                </video>
-                              </div>
-                              <h3><a href="${link}" target="_blank" style="color:inherit;text-decoration:none;">${title}</a></h3>
-                              <p>${engine}<br>${description}</p>
-                              <div class="demo-controls">
-                                <button class="toggle-demo">Play Demo</button>
-                                <a class="demo-link" href="${github}" target="_blank">View on GitHub</a>
-                              </div>
-                            </div>
-                        `);
+                        $projContainer.append(\`\
+                            <div class="project-card">\
+                              <div class="media-wrapper">\
+                                <video class="project-video" preload="metadata" poster="\${thumb}">\
+                                  <source src="\${video}" type="video/mp4">\
+                                  <a href="\${video}" target="_blank">Open demo</a>\
+                                </video>\
+                              </div>\
+                              <h3><a href="\${link}" target="_blank" style="color:inherit;text-decoration:none;">\${title}</a></h3>\
+                              <p>\${engine}<br>\${description}</p>\
+                              <div class="demo-controls">\
+                                <button class="toggle-demo">Play Demo</button>\
+                                <a class="demo-link" href="\${github}" target="_blank">View on GitHub</a>\
+                              </div>\
+                            </div>\
+                        \`);
                     });
                     initProjectVideos();
                 })
@@ -150,3 +151,4 @@ $(document).ready(function () {
         console.error('Error in document ready handler:', err);
     }
 });
+`;

@@ -9,6 +9,10 @@
 	"compatibility_date": "2025-11-01",
 	"observability": {
 		"enabled": true
+	},
+	"assets": {
+		// The path to the directory containing the `index.html` file to be served at `/`
+		"directory": "./public"
 	}
 	/**
 	 * Smart Placement
