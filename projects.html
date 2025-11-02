@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Projects - Keon Fryson</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="../style.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="../logo.png">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="../script.js"></script>
+    <script src="script.js"></script>
     <style>
         /* Hide media by default during initial parse so broken/slow media don't flash.
            JS will reveal valid media as soon as it verifies them. */
@@ -167,10 +167,10 @@
         <h1>Keon Fryson</h1>
         <h3>Game Developer & Programmer</h3>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="subdomain/profile.html">Profile</a>
-            <a href="subdomain/projects.html">Projects</a>
-            <a href="subdomain/contact.html">Contact</a>
+            <a href="home.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -180,95 +180,70 @@
 
             <div class="projects-grid" id="projectContainer">
 
-                <!-- Real-Time-Skeletons -->
-                <article class="project-card" data-project="realtime" data-link="subdomain/projects/realtimeskele.html" role="link" tabindex="0" aria-label="Open Real-Time-Skeletons page">
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3>Real-Time-Sekeletons</h3>
-                            <div class="tech">Unreal (Student Assignment)</div>
-                            <p>This is a  real time strategy game that was mad for school </p>
-                            <p>Click For More </p>
-
-
-                        </div>
-
-                        <div class="card-media">
-
-
-                            <!-- This one had a real embed; keep it in data-embed and JS will copy it to src -->
-                            <iframe class="itch-embed" data-embed="https://itch.io/embed/3975076" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Shadow-Sentinel -->
-                <article class="project-card" data-project="shadow" data-link="subdomain/projects/shadowSentinel.html" role="link" tabindex="0" aria-label="Open Shadow-Sentinel page">
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3>Shadow-Sentinel</h3>
-                            <div class="tech">Unity (Student Assignment)</div>
-                            <p>Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.</p>
-                            <p>Click For More </p>
-                            <div class="card-actions">
-                                <a class="github card-link-ignore" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
-                            </div>
-                        </div>
-
-                        <div class="card-media">
-
-
-                            <!-- This one had a real embed; keep it in data-embed and JS will copy it to src -->
-                            <iframe class="itch-embed" data-embed="https://itch.io/embed/3975076" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </article>
-
                 <!-- Bare-Bones Shooter -->
-                <article class="project-card" data-project="barebones" data-link="subdomain/projects/barebones.html" role="link" tabindex="0" aria-label="Open Bare-Bones Shooter page">
+                <article class="project-card" data-project="barebones" data-link="barebones.html" role="link" tabindex="0" aria-label="Open Bare-Bones Shooter page">
                     <div class="card-content">
                         <div class="card-text">
                             <h3>Bare-Bones Shooter</h3>
                             <div class="tech">Unreal Engine 5 (Student Assignment)</div>
                             <p>Developed a basic first-person shooter focusing on core gameplay systems, shooting mechanics, enemy AI, and player controls. Utilized Blueprints for rapid iteration and debugging.</p>
-                            <p>Click For More </p>
+
                             <div class="card-actions">
                                 <a class="github card-link-ignore" href="https://github.com/KeonFryson/END2502" target="_blank" rel="noopener">View on GitHub</a>
                             </div>
                         </div>
 
                         <div class="card-media">
+                             
 
-
-                            <!-- Placeholder changed to data-embed ï¿½ JS will set src only when valid -->
+                            <!-- Placeholder changed to data-embed — JS will set src only when valid -->
                             <iframe class="itch-embed" data-embed="https://itch.io/embed/XXXXX?link=1" allowfullscreen></iframe>
                         </div>
                     </div>
                 </article>
 
                 <!-- RasterSurface 3D Renderer -->
-                <article class="project-card" data-project="raster" data-link="subdomain/projects/raster.html" role="link" tabindex="0" aria-label="Open RasterSurface page">
+                <article class="project-card" data-project="raster" data-link="raster.html" role="link" tabindex="0" aria-label="Open RasterSurface page">
                     <div class="card-content">
                         <div class="card-text">
                             <h3>RasterSurface 3D Renderer</h3>
                             <div class="tech">C++ (Student Assignment)</div>
                             <p>Used a custom RasterSurface class to render and light a 3D model from scratch. Implemented vertex transformations, depth buffering, and per-pixel lighting.</p>
-                            <p>Click For More </p>
+
                             <div class="card-actions">
                                 <a class="github card-link-ignore" href="https://github.com/KeonFryson/Week-4" target="_blank" rel="noopener">View on GitHub</a>
                             </div>
                         </div>
 
                         <div class="card-media">
-
+                            
 
                             <iframe class="itch-embed" data-embed="https://itch.io/embed/YYYYY?link=1" allowfullscreen></iframe>
                         </div>
                     </div>
                 </article>
 
+                <!-- Shadow-Sentinel -->
+                <article class="project-card" data-project="shadow" data-link="shadowSentinel.html" role="link" tabindex="0" aria-label="Open Shadow-Sentinel page">
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3>Shadow-Sentinel</h3>
+                            <div class="tech">Unity (Student Assignment)</div>
+                            <p>Implemented a sound detection stealth system, advanced enemy AI, and modular systems for customizing enemy logic and animations.</p>
 
+                            <div class="card-actions">
+                                <a class="github card-link-ignore" href="https://github.com/Devonflynn96/Shadow-Sentinel" target="_blank" rel="noopener">View on GitHub</a>
+                            </div>
+                        </div>
 
+                        <div class="card-media">
+                             
 
+                            <!-- This one had a real embed; keep it in data-embed and JS will copy it to src -->
+                            <iframe class="itch-embed" data-embed="https://itch.io/embed/3975076" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </section>
