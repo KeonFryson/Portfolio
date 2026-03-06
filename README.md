@@ -1,4 +1,4 @@
-https://keonfryson.com/profile
+https://keonfryson.com/
 
 
 
