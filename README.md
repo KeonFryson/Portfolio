@@ -1,4 +1,4 @@
-https://keonfryson.github.io/Portfolio/
+https://keonfryson.com/profile
 
 
 
