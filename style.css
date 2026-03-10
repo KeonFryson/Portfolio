@@ -96,13 +96,14 @@ header {
     header img {
         position: relative;
         z-index: 1;
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         border: 2px solid var(--accent);
         box-shadow: 0 0 0 4px rgba(0,200,255,0.08), 0 0 30px rgba(0,200,255,0.25);
         margin-bottom: 1.25rem;
         object-fit: cover;
+        object-position: top;
         animation: pulse-ring 3s ease-in-out infinite;
     }
 
