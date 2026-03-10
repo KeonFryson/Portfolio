@@ -1,92 +1,97 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>RasterSurface 3D Renderer � Keon Fryson</title>
+    <title>RasterSurface 3D Renderer — Keon Fryson</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            background: #111;
-            color: #eaeaea;
-            font-family: system-ui,Segoe UI,Arial
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 28px auto;
-            padding: 0 18px
-        }
-
-        .hero {
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid #222
-        }
-
-            .hero img {
-                width: 100%;
-                display: block;
-                object-fit: cover
-            }
-
-        .title {
-            color: #00bcd4;
-            margin: 12px 0;
-            font-size: 20px;
-            font-weight: 700
-        }
-
-        .cols {
-            display: flex;
-            gap: 16px;
-            margin-top: 12px
-        }
-
-        .col {
-            flex: 1;
-            background: #151515;
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #222
-        }
-
-        @media(max-width:880px) {
-            .cols {
-                flex-direction: column
-            }
-        }
-
-        a.back {
-            color: #80deea;
-            display: inline-block;
-            margin-bottom: 8px;
-            text-decoration: none
-        }
-    </style>
+    <link href="../../style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <header>
+        <img src="../../Profile.jpg" alt="Profile Photo">
+        <h1>Keon Fryson</h1>
+        <h3>Game Developer &amp; Programmer</h3>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="../../profile.html">Profile</a>
+            <a href="../../projects.html">Projects</a>
+            <a href="../../contact.html">Contact</a>
+        </nav>
+    </header>
+
     <div class="container">
-        <a class="back" href="../../projects.html">&larr; Back</a>
-        <div class="hero"><img src="../../projects/rastersurface.png" alt="RasterSurface"></div>
-        <div class="title">RasterSurface 3D Renderer</div>
+        <a class="back" href="../../projects.html">Back to Projects</a>
+
+        <div class="hero">
+            <img src="../../projects/rastersurface.png" alt="RasterSurface 3D Renderer">
+        </div>
+
+        <div class="proj-title-block">
+            <p class="proj-eyebrow">Student Assignment &nbsp;·&nbsp; C++ &nbsp;·&nbsp; Solo</p>
+            <h1>RasterSurface 3D Renderer</h1>
+            <p class="sub">Software Rasterization Pipeline — Built from First Principles</p>
+        </div>
+
+        <div class="proj-links">
+            <a href="https://github.com/KeonFryson/Week-4" target="_blank" rel="noopener">View Source on GitHub</a>
+        </div>
 
         <div class="cols">
             <div class="col">
                 <h4>About</h4>
-                <p>Custom RasterSurface renderer: vertex transforms, depth buffer and per-pixel lighting.</p>
+                <p>A custom software renderer built from scratch using a RasterSurface. Implements the full 3D pipeline: vertex transforms, triangle rasterization, depth buffering, barycentric interpolation, and per-pixel Phong lighting.</p>
             </div>
             <div class="col">
                 <h4>Project Info</h4>
-                <ul><li>Language: C++</li><li>Student Assignment</li><li>Team Number: 1</li></ul>
+                <ul class="meta-list">
+                    <li><span class="label">Language</span><span class="value">C++</span></li>
+                    <li><span class="label">Type</span><span class="value">Student Assignment</span></li>
+                    <li><span class="label">Team Size</span><span class="value">Solo</span></li>
+                </ul>
             </div>
         </div>
 
-        <section style="margin-top:18px;">
-            <h3>Details</h3>
-            <p>This assignment taught how to use a RasterSurface to render and light a 3D object from first principles. Work included implementing vertex transforms (model, view, projection), triangle assembly and rasterization, depth buffering, barycentric interpolation for per-pixel attributes (positions, normals, UVs), and a basic per-pixel lighting model (ambient + diffuse + specular). The renderer also handles camera transforms, simple texture lookup, and clamping the final color output to the surface. The goal was to understand the full software rasterization pipeline and how shading, depth testing, and interpolation combine to produce a lit 3D image.</p>
-            <p><a href="https://github.com/KeonFryson/Week-4" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a></p>
+        <section>
+            <h3>Overview</h3>
+            <p class="proj-intro">This assignment taught how to render and light a 3D object from first principles using a RasterSurface — no graphics API, no shortcuts. Every stage of the pipeline was implemented manually in C++.</p>
+
+            <h3>What I Implemented</h3>
+
+            <div class="feature-solo">
+                <h4>Vertex Transforms</h4>
+                <p>Model, view, and projection matrices applied per-vertex to transform geometry from object space through to clip space and onto the screen.</p>
+            </div>
+
+            <div class="feature-solo">
+                <h4>Triangle Assembly &amp; Rasterization</h4>
+                <p>Assembled transformed vertices into triangles and rasterized them pixel by pixel, computing coverage and interpolating attributes across each triangle's surface.</p>
+            </div>
+
+            <div class="feature-solo">
+                <h4>Depth Buffering</h4>
+                <p>A per-pixel depth buffer to correctly resolve occlusion — fragments failing the depth test are discarded, ensuring surfaces render in the right order without sorting geometry.</p>
+            </div>
+
+            <div class="feature-solo">
+                <h4>Barycentric Interpolation</h4>
+                <p>Per-pixel attributes — positions, normals, and UVs — interpolated across triangle faces using barycentric coordinates, feeding accurate data into the lighting and texture stages.</p>
+            </div>
+
+            <div class="feature-solo">
+                <h4>Per-Pixel Phong Lighting</h4>
+                <p>A full ambient + diffuse + specular lighting model evaluated per pixel using interpolated world-space normals and surface positions for smooth, accurate shading.</p>
+            </div>
+
+            <div class="feature-solo">
+                <h4>Camera Transforms &amp; Texture Lookup</h4>
+                <p>Camera view matrix applied to position the scene, paired with simple UV-based texture sampling and final color clamping before writing to the RasterSurface output.</p>
+            </div>
+
+            <h3>What I Learned</h3>
+            <p>Building the full rasterization pipeline by hand gave me a deep understanding of how depth testing, barycentric interpolation, and per-pixel shading work together to produce a correctly lit 3D image. Seeing how each stage feeds the next — from vertex transform all the way to a final pixel color — made the mechanics of real-time graphics engines much more concrete.</p>
         </section>
     </div>
+
+    <footer>&copy; 2025 Keon Fryson. All rights reserved.</footer>
 </body>
 </html>

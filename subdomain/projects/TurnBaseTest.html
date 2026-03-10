@@ -1,129 +1,41 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TurnBaseTest - Keon Fryson</title>
+    <title>TurnBaseTest — Keon Fryson</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            background: #111;
-            color: #eaeaea;
-            font-family: system-ui,Segoe UI,Arial
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 28px auto;
-            padding: 0 18px
-        }
-
-        .hero {
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid #222
-        }
-
-            .hero img {
-                width: 100%;
-                display: block;
-                object-fit: cover
-            }
-
-        .title {
-            color: #00bcd4;
-            margin: 12px 0;
-            font-size: 20px;
-            font-weight: 700
-        }
-
-        .cols {
-            display: flex;
-            gap: 16px;
-            margin-top: 12px
-        }
-
-        .col {
-            flex: 1;
-            background: #151515;
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #222
-        }
-
-        @media(max-width:880px) {
-            .cols {
-                flex-direction: column
-            }
-        }
-
-        a.back {
-            color: #80deea;
-            display: inline-block;
-            margin-bottom: 8px;
-            text-decoration: none
-        }
-
-        /* Feature image layout */
-        .feature {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-            .feature.reverse {
-                flex-direction: row-reverse;
-            }
-
-            /* Text column grows, image keeps full frame without being cropped */
-            .feature > div {
-                flex: 1 1 auto;
-            }
-
-            .feature img {
-                flex: 0 0 auto; /* prevent image from shrinking to nothing */
-                max-width: 55%; /* allow image to scale but not exceed this portion */
-                width: auto;
-                height: auto; /* preserve aspect ratio, show whole frame */
-                object-fit: contain; /* don't crop the GIF */
-                border-radius: 4px;
-                border: 1px solid #222;
-            }
-
-        /* Medium screens: slightly larger text / smaller image ratio */
-        @media (max-width:1100px) {
-            .feature img {
-                max-width: 45%;
-            }
-        }
-
-        /* Small screens: stack and full width */
-        @media(max-width:880px) {
-            .feature {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-                .feature.reverse {
-                    flex-direction: column;
-                }
-
-                .feature img {
-                    width: 100%;
-                    max-width: 100%;
-                    height: auto;
-                }
-        }
-    </style>
+    <link href="../../style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <header>
+        <img src="../../Profile.jpg" alt="Profile Photo">
+        <h1>Keon Fryson</h1>
+        <h3>Game Developer &amp; Programmer</h3>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="../../profile.html">Profile</a>
+            <a href="../../projects.html">Projects</a>
+            <a href="../../contact.html">Contact</a>
+        </nav>
+    </header>
+
     <div class="container">
-        <a class="back" href="../../projects.html">&larr; Back</a>
+        <a class="back" href="../../projects.html">Back to Projects</a>
+
         <div class="hero">
             <img src="../../projects/turnbased.png" alt="TurnBaseTest">
         </div>
-        <div class="title">TurnBaseTest</div>
+
+        <div class="proj-title-block">
+            <p class="proj-eyebrow">Solo Project &nbsp;·&nbsp; Unity &nbsp;·&nbsp; C#</p>
+            <h1>TurnBaseTest</h1>
+            <p class="sub">Turn-Based Battle System</p>
+        </div>
+
+        <div class="proj-links">
+            <a href="https://github.com/KeonFryson/TurnBaseGame" target="_blank" rel="noopener">View Source on GitHub</a>
+            <a href="https://order112115.itch.io/turnbasedtest" target="_blank" rel="noopener">Play on itch.io</a>
+        </div>
 
         <div class="cols">
             <div class="col">
@@ -132,29 +44,23 @@
             </div>
             <div class="col">
                 <h4>Project Info</h4>
-                <ul>
-                    <li>Role: Solo Developer</li>
-                    <li>Engine: Unity</li>
-                    <li>Language: C# </li>
-                    <li><a href="https://github.com/KeonFryson/TurnBaseGame" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a></li>
+                <ul class="meta-list">
+                    <li><span class="label">Role</span><span class="value">Solo Developer</span></li>
+                    <li><span class="label">Engine</span><span class="value">Unity</span></li>
+                    <li><span class="label">Language</span><span class="value">C#</span></li>
                 </ul>
             </div>
         </div>
 
-        <section style="margin-top:18px;">
-            <p>
-                <a href="https://github.com/KeonFryson/TurnBaseGame" target="_blank" rel="noopener" style="color:#00bcd4">View source on GitHub</a>
-                &nbsp;|&nbsp;
-                <a href="https://order112115.itch.io/turnbasedtest" target="_blank" rel="noopener" style="color:#00bcd4">Play on itch.io</a>
-            </p>
+        <section>
             <h3>Introduction</h3>
-            <p>This project was a solo-developed turn-based battle system inspired by Pokémon-style combat but featuring an original elemental triangle of <strong>Chaos</strong>, <strong>Order</strong>, and <strong>Spirit</strong> types. It includes a complete battle loop with unit and move selection, type-based advantages, and a responsive UI. All gameplay logic, UI, and flow were designed and implemented independently.</p>
+            <p class="proj-intro">A solo-developed turn-based battle system inspired by Pokémon-style combat but with an original elemental triangle — <strong>Chaos</strong>, <strong>Order</strong>, and <strong>Spirit</strong>. It includes a complete battle loop with unit and move selection, type-based advantages, and a responsive UI. All gameplay logic, UI, and flow were designed and implemented independently.</p>
 
-            <h3>Features I implemented</h3>
+            <h3>Features I Implemented</h3>
 
             <div class="feature reverse">
                 <div>
-                    <h4>Unit selection menu</h4>
+                    <h4>Unit Selection Menu</h4>
                     <p>Created the system where the player chooses one of three available units before entering battle. The menu supports smooth navigation, visual highlighting, and clean transitions into the combat scene for an intuitive start to each match.</p>
                 </div>
                 <img src="https://media.githubusercontent.com/media/KeonFryson/Image/refs/heads/main/2025-11-13%2013-01-10.gif" alt="Unit selection GIF">
@@ -162,7 +68,7 @@
 
             <div class="feature">
                 <div>
-                    <h4>Move selection system</h4>
+                    <h4>Move Selection System</h4>
                     <p>Built the move-selection interface where players pick four moves for their chosen unit. Each move includes a short description and fixed damage value, designed to balance simplicity with tactical decision-making.</p>
                 </div>
                 <img src="https://media.githubusercontent.com/media/KeonFryson/Image/refs/heads/main/UnitMoves.gif" alt="Move selection GIF">
@@ -170,12 +76,8 @@
 
             <div class="feature reverse">
                 <div>
-                    <h4>Turn-based battle logic</h4>
+                    <h4>Turn-Based Battle Logic</h4>
                     <p>Developed the full turn-handling system managing player and enemy actions in sequence. The system calculates damage, applies type advantages between Chaos, Order, and Spirit, and updates health and text feedback dynamically after each move.</p>
-                </div>
-                <div>
-                    <h4>Enemy AI</h4>
-                    <p>Implemented a lightweight AI that chooses moves based on type advantages and randomness for unpredictability. The AI evaluates the player’s current unit type to create dynamic and fair encounters.</p>
                 </div>
                 <img src="https://media.githubusercontent.com/media/KeonFryson/Image/refs/heads/main/2025-11-13%2013-01-10%20(1).gif" alt="Battle system GIF">
             </div>
@@ -183,17 +85,23 @@
             <div class="feature">
                 <div>
                     <h4>Enemy AI</h4>
-                    <p>Implemented a lightweight AI that chooses moves based on type advantages and randomness for unpredictability. The AI evaluates the player’s current unit type to create dynamic and fair encounters.</p>
+                    <p>Implemented a lightweight AI that chooses moves based on type advantages and randomness for unpredictability. The AI evaluates the player's current unit type to create dynamic and fair encounters.</p>
                 </div>
                 <img src="https://media.githubusercontent.com/media/KeonFryson/Image/refs/heads/main/2025-11-13%2013-01-10%20(1).gif" alt="Enemy AI GIF">
             </div>
 
-            <h4>Battle UI & feedback</h4>
-            <p>Designed and scripted the in-battle HUD showing health, move buttons, and battle messages. Added text-based feedback for effectiveness results (“It was super effective!”) and smooth transitions for clear, engaging turn flow.</p>
+            <div class="feature-solo">
+                <h4>Battle UI &amp; Feedback</h4>
+                <p>Designed and scripted the in-battle HUD showing health, move buttons, and battle messages. Added text-based feedback for effectiveness results ("It was super effective!") and smooth transitions for clear, engaging turn flow.</p>
+            </div>
 
-            <h4>UX polish and game flow</h4>
-            <p>Refined turn pacing, transitions, and UI responsiveness to make the entire experience smoother. Added simple animations and adjusted text timing to improve readability and maintain a satisfying battle rhythm.</p>
+            <div class="feature-solo">
+                <h4>UX Polish &amp; Game Flow</h4>
+                <p>Refined turn pacing, transitions, and UI responsiveness to make the entire experience smoother. Added simple animations and adjusted text timing to improve readability and maintain a satisfying battle rhythm.</p>
+            </div>
         </section>
     </div>
+
+    <footer>&copy; 2025 Keon Fryson. All rights reserved.</footer>
 </body>
 </html>
