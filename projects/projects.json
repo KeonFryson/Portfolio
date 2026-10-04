@@ -21,9 +21,9 @@
     "about": "Box Factory is a Factorio-inspired logistics game. Mine raw ore, belt it to smelters and assemblers, sell the finished goods for cash, and spend items on research to unlock better machines. Everything on screen is a colored square, so the focus stays on systems design and clean, data-driven code.",
     "info": {
       "Role": "Solo Developer",
-      "Engine": "Unity (2D, new Input System)",
+      "Engine": "Unity",
       "Language": "C#",
-      "Duration": "X Weeks",
+      "Duration": "4 Weeks",
       "Team Size": "1"
     },
 
