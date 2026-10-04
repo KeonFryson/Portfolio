@@ -69,7 +69,7 @@ header {
     border-bottom: 1px solid var(--border);
     overflow: hidden;
 }
-
+before        
     header::before {
         content: '';
         position: absolute;
@@ -519,10 +519,10 @@ section {
 ?????????????????????????????????????????? */
 .feature {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1.75rem;
+    margin-bottom: 5rem;
+    padding: 3rem;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 3px;
@@ -565,7 +565,7 @@ section {
 
     .feature img {
         flex: 0 0 auto;
-        max-width: 50%;
+        max-width: 60%;
         width: auto;
         height: auto;
         object-fit: contain;
@@ -704,79 +704,104 @@ h2 {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .project-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    position: relative;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
+    padding: 1.25rem;
     transition: transform 0.3s, border-color 0.3s;
 }
 
-    .project-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent), var(--accent2));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s;
-    }
-
     .project-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(0,200,255,0.3);
+        border-color: rgba(0, 200, 255, 0.3);
     }
 
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-    .project-card h3 {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-size: 1.1rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 0.6rem;
-    }
-
-    .project-card p {
-        font-size: 0.92rem;
-        color: var(--muted);
-        margin-bottom: 1.25rem;
-        line-height: 1.6;
-    }
-
-    .project-card a {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--white);
-        text-decoration: none;
-        padding: 0.4rem 1rem;
+    .project-card > img {
+        flex: 0 0 280px;
+        width: 280px;
+        height: 150px;
+        object-fit: cover;
         border: 1px solid var(--border);
-        border-radius: 2px;
-        transition: border-color 0.2s, color 0.2s, background 0.2s;
-        display: inline-block;
+        border-radius: 3px;
     }
 
-        .project-card a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            background: rgba(0,200,255,0.06);
+.card-text {
+    flex: 1;
+}
+
+.project-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+}
+
+.tech {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 0.92rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+    .btn:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: rgba(0, 200, 255, 0.06);
+    }
+
+@media (max-width: 700px) {
+    .project-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .project-card > img {
+            flex: none;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
         }
+}
 
 #contact p {
     font-size: 1rem;
@@ -842,5 +867,53 @@ h2 {
 
     section h3 {
         font-size: 1.6rem;
+    }
+
+    nav a.active {
+        color: var(--accent);
+        border-color: var(--border);
+    }
+
+    #contactForm {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0 12px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--text);
+            font: inherit;
+        }
+
+        #contactForm button {
+            width: 100%;
+            margin-top: 6px;
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 5px;
+            background: var(--accent);
+            color: var(--black);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+    #contactResult {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .resume-frame {
+        width: 100%;
+        max-width: 900px;
+        height: 500px;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
     }
 }

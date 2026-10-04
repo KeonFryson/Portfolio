@@ -1,0 +1,172 @@
+[
+  {
+    "id": "box-factory",
+    "title": "Box Factory",
+    "eyebrow": "Solo Project · Unity · C#",
+    "subtitle": "A minimalist 2D factory-automation game where every machine, item and menu is built from code.",
+    "tech": "Unity (Solo Project)",
+    "summary": "A Factorio-inspired logistics game: mine ore, belt it to machines, sell goods, and research new tech. Fully data-driven.",
+    "thumb": "projects/box-factory/hero.png",
+    "hero": "projects/box-factory/hero.png",
+    "links": [
+      {
+        "label": "View Source on GitHub",
+        "url": "https://github.com/KeonFryson/REPO"
+      },
+      {
+        "label": "Play on itch.io",
+        "url": "https://order112115.itch.io/GAME"
+      }
+    ],
+    "about": "Box Factory is a Factorio-inspired logistics game. Mine raw ore, belt it to smelters and assemblers, sell the finished goods for cash, and spend items on research to unlock better machines. Everything on screen is a colored square, so the focus stays on systems design and clean, data-driven code.",
+    "info": {
+      "Role": "Solo Developer",
+      "Engine": "Unity (2D, new Input System)",
+      "Language": "C#",
+      "Duration": "X Weeks",
+      "Team Size": "1"
+    },
+
+    "video": {
+      "title": "See It Running",
+      "src": "projects/box-factory/demo.mp4",
+      "poster": "projects/box-factory/poster.png",
+      "caption": "Full loop: mining → smelting → selling → researching new machines."
+    },
+
+    "intro": "I wanted to build the core loop of a factory game from scratch and keep it fully data-driven: new items, recipes, buildings and technologies are just ScriptableObject assets, with no code changes required. The goal was a clean architecture that scales to hundreds of moving items without hitching.",
+
+    "features": [
+      {
+        "title": "Grid & Multi-Cell Footprints",
+        "text": "A central `GridManager` registers which building occupies each cell. A `Footprint` helper handles buildings larger than 1×1: sizes are defined as length-along-facing by width-across, so rotating a building automatically rotates its footprint, anchor and output cell.",
+        "image": "projects/box-factory/grid-footprints.gif"
+      },
+      {
+        "title": "Conveyor Transport & Auto-Connect",
+        "text": "Items travel across each building from an entry point to an exit edge, then hand off to the next building if it has room, so full belts naturally back up. When you place or delete belts, neighbours re-aim themselves so lines connect without manual rotation, with loop checks to avoid feeding a belt into itself.",
+        "image": "projects/box-factory/belts-autoconnect.gif"
+      },
+      {
+        "title": "Miners, Processors & Sellers",
+        "text": "Three machine types share one `FactoryBuilding` base class. Miners generate a player-selected ore, Processors run multi-recipe conversions (ore → bar, etc.) chosen by the incoming item, and Sellers convert items to money using per-item value and a per-tier multiplier.",
+        "image": "projects/box-factory/machines.gif"
+      },
+      {
+        "title": "Research & Tech Tree",
+        "text": "Technologies list prerequisites, an item cost and the buildings they unlock. Research Labs only accept items the active tech still needs, so everything else blocks on the belt. The tech tree window lays out nodes in dependency columns, draws prerequisite lines and shows live progress.",
+        "image": "projects/box-factory/tech-tree.png"
+      },
+      {
+        "title": "Code-Built, Factorio-Style UI",
+        "text": "The entire HUD is generated at runtime: money and research readouts, a 9-slot hotbar, a categorized build menu, a tech window and a per-machine inspector. Buildings can be dragged from the menu onto hotbar slots, and the layout is saved with PlayerPrefs.",
+        "image": "projects/box-factory/ui-hotbar.gif"
+      },
+      {
+        "title": "Placement, Drag-Build & Hold-to-Delete",
+        "text": "A snapping ghost preview shows green or red validity, 1×1 buildings can be drag-placed in a line, R rotates the ghost or the hovered building, and holding right-click fills a red overlay on the target before demolishing it."
+      },
+      {
+        "title": "Pooling & Procedural Visuals",
+        "text": "Item visuals and sell-burst particles use Unity's `ObjectPool` under a shared `DontDestroyOnLoad` root. All sprites come from a single generated white square tinted per item or building, so the game needs no art assets."
+      }
+    ],
+
+    "gallery": [
+      {
+        "src": "projects/box-factory/screenshot-1.png",
+        "alt": "Early game layout",
+        "caption": "Early game: first miner and seller"
+      },
+      {
+        "src": "projects/box-factory/screenshot-2.png",
+        "alt": "Mid game factory",
+        "caption": "Mid game: multi-stage production lines"
+      },
+      {
+        "src": "projects/box-factory/clip-3.mp4",
+        "poster": "projects/box-factory/screenshot-3.png",
+        "caption": "Clip: belt backing up and recovering"
+      }
+    ],
+
+    "code": [
+      {
+        "title": "Footprint.cs — rotation-aware multi-cell math",
+        "lines": [
+          "public static void GetCells(Vector2Int anchor, Vector2Int size, Direction facing, List<Vector2Int> result)",
+          "{",
+          "    result.Clear();",
+          "    Vector2Int f = DirectionUtil.ToVector(facing);",
+          "    Vector2Int l = Left(facing);",
+          "    for (int i = 0; i < size.x; i++)",
+          "        for (int j = 0; j < size.y; j++)",
+          "            result.Add(anchor + f * i + l * j);",
+          "}"
+        ],
+        "note": "Size is expressed relative to facing, so a rotated building only needs a new anchor. The footprint follows automatically."
+      },
+      {
+        "title": "FactoryBuilding.cs — item hand-off between buildings",
+        "lines": [
+          "protected virtual void TryPushOutput()",
+          "{",
+          "    FactoryBuilding neighbor = GetNeighborInFacing();",
+          "    if (neighbor != null && neighbor != this && neighbor.TryAcceptInput(heldItem))",
+          "    {",
+          "        heldItem = null;",
+          "        moveProgress = 0f;",
+          "    }",
+          "    // else: stays parked at the exit edge until the neighbor has room.",
+          "}"
+        ],
+        "note": "One polymorphic `TryAcceptInput` call lets belts, processors, sellers and labs each decide whether to take an item. Back-pressure comes for free."
+      },
+      {
+        "title": "ItemVisual.cs — pooled item spawning",
+        "lines": [
+          "private static ObjectPool<ItemVisual> Pool =>",
+          "    pool ??= new ObjectPool<ItemVisual>(",
+          "        createFunc: CreateNew,",
+          "        actionOnGet: v => v.gameObject.SetActive(true),",
+          "        actionOnRelease: v => { v.Definition = null; v.gameObject.SetActive(false); },",
+          "        actionOnDestroy: v => { if (v != null) Destroy(v.gameObject); },",
+          "        collectionCheck: true,",
+          "        defaultCapacity: 32,",
+          "        maxSize: 1000);"
+        ],
+        "note": "Pooling keeps allocations flat even with huge belt networks, and statics reset on subsystem registration so Enter Play Mode without domain reload stays safe."
+      },
+      {
+        "title": "ResearchManager.cs — only accept what the tech needs",
+        "lines": [
+          "public bool TryContribute(ItemDefinition item)",
+          "{",
+          "    if (Current == null || item == null) return false;",
+          "",
+          "    ItemAmount need = null;",
+          "    foreach (var c in Current.cost)",
+          "        if (c != null && c.item == item) { need = c; break; }",
+          "    if (need == null) return false;",
+          "",
+          "    // ...reject if already fully delivered, otherwise count it",
+          "    d[item] = have + 1;",
+          "    if (!CheckComplete(Current)) OnResearchChanged?.Invoke();",
+          "    return true;",
+          "}"
+        ],
+        "note": "Returning false makes the lab refuse the item, which naturally blocks the belt, giving the player a clear visual signal."
+      }
+    ],
+
+    "notes": [
+      "Data-driven design: `ItemDefinition`, `RecipeDefinition`, `BuildingDefinition` and `TechDefinition` are ScriptableObjects, so content is added from the editor with no new code.",
+      "Upgrades are modelled as separate building definitions with higher `speedMultiplier` values, unlocked through research, rather than in-place upgrade logic.",
+      "Singleton managers (Grid, Economy, Research, Build, UI) communicate through C# events like `OnMoneyChanged` and `OnTechCompleted`, so the UI never polls game logic for state changes.",
+      "Uses Unity's new Input System, with UI drag-and-drop built on `EventTrigger` and layout groups generated entirely in code.",
+      "Hot paths avoid per-frame allocations: pooled visuals and particles, reused cell lists and cached sprites."
+    ],
+
+    "learned": "Getting multi-cell buildings to rotate cleanly was the hardest problem. My first approach stored absolute cells, which broke on rotation. Moving to a facing-relative footprint with a center-cell anchor fixed placement, ghost preview and rotation all at once. Building the UI in code taught me layout groups and event handling in depth, but I'd move to prefab-based UI next time to make iteration faster. I'd also add save/load and multi-input recipes, which the current single-input design doesn't support."
+  }
+]
