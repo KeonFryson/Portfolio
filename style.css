@@ -916,4 +916,123 @@ h2 {
         border: 1px solid var(--accent);
         border-radius: 8px;
     }
+
+    /* ---- Code boxes ---- */
+    .code-block {
+        margin: 1.75rem 0;
+        max-width: 780px;
+        background: var(--deep);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 0 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .code-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.55rem 1rem;
+        background: var(--panel);
+        border-bottom: 1px solid var(--border);
+    }
+
+        /* three "window" dots */
+        .code-header::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent2);
+            box-shadow: 16px 0 0 var(--gold), 32px 0 0 var(--accent);
+            margin-right: 36px;
+            flex: none;
+        }
+
+    .code-title {
+        flex: 1;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .code-lang {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--accent);
+        border: 1px solid rgba(0, 200, 255, 0.25);
+        border-radius: 2px;
+        padding: 0.1rem 0.5rem;
+    }
+
+    .copy-btn {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        padding: 0.2rem 0.7rem;
+        cursor: pointer;
+        transition: border-color 0.2s, color 0.2s;
+    }
+
+        .copy-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+    .code-block pre {
+        margin: 0;
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: var(--text);
+    }
+
+    .code-block code {
+        white-space: pre;
+        background: none;
+        padding: 0;
+    }
+
+    .code-block .code-note {
+        margin: 0;
+        max-width: none;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border);
+        background: var(--panel);
+    }
+
+    /* syntax colors */
+    .tok-k {
+        color: #ff7a93;
+    }
+    /* keywords */
+    .tok-s {
+        color: var(--gold);
+    }
+    /* strings */
+    .tok-c {
+        color: var(--muted);
+        font-style: italic;
+    }
+    /* comments */
+    .tok-n {
+        color: #c79bff;
+    }
+    /* numbers */
+    .tok-t {
+        color: #7fe3b0;
+    }
+    /* Types / Names */
 }
