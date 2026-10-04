@@ -132,8 +132,14 @@ function renderProject(p) {
         if (grid) grid.innerHTML = projects.map(renderCard).join('');
         if (page) {
             const id = new URLSearchParams(location.search).get('id');
-            const p = projects.find((x) => x.id === id);
-            if (!p) { page.innerHTML = '<a class="back" href="projects.html">Back to Projects</a><p>Project not found.</p>'; return; }
+            const p = id ? projects.find((x) => x.id === id)
+                : projects.length === 1 ? projects[0] : null; // no id + only one project: show it
+            if (!p) {
+                page.innerHTML = `<a class="back" href="projects.html">Back to Projects</a>
+          <p>Project not found: <code>${esc(id)}</code></p>
+          <p>Available ids: ${projects.map((x) => `<code>${esc(x.id)}</code>`).join(', ')}</p>`;
+                return;
+            }
             document.title = `${p.title} — Keon Fryson`;
             page.innerHTML = renderProject(p);
         }
