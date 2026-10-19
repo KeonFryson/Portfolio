@@ -3,64 +3,56 @@
     "id": "box-factory",
     "title": "Box Factory",
     "eyebrow": "Solo Project · Unity · C#",
-    "subtitle": "A minimalist 2D factory-automation game where every machine, item and menu is built from code.",
+    "subtitle": "A minimalist 2D factory-automation game with a full tech tree, save system and endgame, built from code and data.",
     "tech": "Unity (Solo Project)",
-    "summary": "A Factorio-inspired logistics game: mine ore, belt it to machines, sell goods, and research new tech. Fully data-driven.",
+    "summary": "A Factorio-inspired logistics game: mine ore, belt it through smelters and assemblers, craft science packs, research new tech and activate the Portal to win. Fully data-driven.",
     "thumb": "projects/box-factory/hero.png",
     "hero": "projects/box-factory/hero.png",
-    "links": [
-      {
-        "label": "View Source on GitHub",
-        "url": "https://github.com/KeonFryson/REPO"
-      },
-      {
-        "label": "Play on itch.io",
-        "url": "https://order112115.itch.io/GAME"
-      }
-    ],
-    "about": "Box Factory is a Factorio-inspired logistics game. Mine raw ore, belt it to smelters and assemblers, sell the finished goods for cash, and spend items on research to unlock better machines. Everything on screen is a colored square, so the focus stays on systems design and clean, data-driven code.",
+
+    "about": "Box Factory is a Factorio-inspired logistics game. Mine raw ore, belt it to smelters, presses and assemblers, then craft four tiers of science packs from multi-ingredient recipes. Feed those packs to research labs to unlock faster machines, and finally build a Portal and deliver Portal Cores and Focus Crystals to win. Machines are simple colored squares, so the focus stays on systems design and clean, data-driven code.",
     "info": {
       "Role": "Solo Developer",
       "Engine": "Unity",
       "Language": "C#",
-      "Duration": "4 Weeks",
+      "Duration": "8 Weeks",
       "Team Size": "1"
     },
-
-    "video": {
-      "title": "See It Running",
-      "src": "projects/box-factory/demo.mp4",
-      "poster": "projects/box-factory/poster.png",
-      "caption": "Full loop: mining → smelting → selling → researching new machines."
-    },
-
-    "intro": "I wanted to build the core loop of a factory game from scratch and keep it fully data-driven: new items, recipes, buildings and technologies are just ScriptableObject assets, with no code changes required. The goal was a clean architecture that scales to hundreds of moving items without hitching.",
-
+    "intro": "I wanted to build the core loop of a factory game from scratch and keep it fully data-driven: new items, recipes, buildings and technologies are just ScriptableObject assets, with no code changes required. The goal was a clean architecture that scales to hundreds of moving items without hitching, plus the surrounding pieces a real game needs: a tutorial, main menu, save slots and a win condition.",
     "features": [
       {
         "title": "Grid & Multi-Cell Footprints",
-        "text": "A central `GridManager` registers which building occupies each cell. A `Footprint` helper handles buildings larger than 1×1: sizes are defined as length-along-facing by width-across, so rotating a building automatically rotates its footprint, anchor and output cell.",
-        "image": "projects/box-factory/grid-footprints.gif"
+        "text": "A central `GridManager` registers which building occupies each cell. A `Footprint` helper handles buildings larger than 1×1 (the 1×2 Splitter, 2×2 Fabricator and 3×3 Portal): sizes are defined as length-along-facing by width-across, so rotating a building automatically rotates its footprint, anchor and output cell.",
+        "image": "projects/box-factory/grid-footprints.png"
       },
       {
-        "title": "Conveyor Transport & Auto-Connect",
-        "text": "Items travel across each building from an entry point to an exit edge, then hand off to the next building if it has room, so full belts naturally back up. When you place or delete belts, neighbours re-aim themselves so lines connect without manual rotation, with loop checks to avoid feeding a belt into itself.",
-        "image": "projects/box-factory/belts-autoconnect.gif"
+        "title": "Conveyor Transport, Auto-Connect & Animated Belts",
+        "text": "Items travel across each building from an entry point to an exit edge, then hand off to the next building if it has room, so full belts naturally back up. When you place or delete belts, neighbours re-aim themselves so lines connect without manual rotation, with loop checks to avoid feeding a belt into itself. Belt art is a sprite sheet sliced at runtime; chevrons scroll at exactly the item travel speed from one shared clock, and tiles turn into curved corners when fed from the side.",
+        "image": "projects/box-factory/belts-autoconnect.png"
       },
       {
-        "title": "Miners, Processors & Sellers",
-        "text": "Three machine types share one `FactoryBuilding` base class. Miners generate a player-selected ore, Processors run multi-recipe conversions (ore → bar, etc.) chosen by the incoming item, and Sellers convert items to money using per-item value and a per-tier multiplier.",
-        "image": "projects/box-factory/machines.gif"
+        "title": "Miners, Processors & Splitters",
+        "text": "Machine types share one `FactoryBuilding` base class. Miners generate a player-selected ore. Processors run multi-input, multi-output recipes (for example Gear + Copper Wire → Automation Pack), with a Factorio-style recipe picker, input buffers and a live flow diagram. Splitters have two lanes and alternate outputs, falling back to whichever side is free. Settings can be copied and pasted between machines.",
+        "image": "projects/box-factory/machines.png"
       },
       {
-        "title": "Research & Tech Tree",
-        "text": "Technologies list prerequisites, an item cost and the buildings they unlock. Research Labs only accept items the active tech still needs, so everything else blocks on the belt. The tech tree window lays out nodes in dependency columns, draws prerequisite lines and shows live progress.",
+        "title": "Research, Science Packs & the Portal",
+        "text": "A 14-node tech tree lists prerequisites, item costs and the buildings each tech unlocks. Early techs cost raw items; later ones need Automation, Logistics, Chemical and Quantum packs. Research Labs only accept items the active tech still needs, so everything else blocks on the belt. The endgame Portal accepts Portal Cores and Focus Crystals, shows charging progress and triggers a win screen.",
         "image": "projects/box-factory/tech-tree.png"
       },
       {
+        "title": "Save System, Menus & Tutorial",
+        "text": "A main menu, pause menu and slot picker are built entirely in code, with three manual save slots plus a timed autosave. Saves are JSON and reference buildings and items by stable IDs (B01, I01...), so renaming an asset never breaks a save. Machine state is captured too: items in transit, recipe progress, input buffers, research progress, hotbar and camera. A step-by-step tutorial detects when the player completes each action.",
+        "image": "projects/box-factory/save-menu.png"
+      },
+      {
         "title": "Code-Built, Factorio-Style UI",
-        "text": "The entire HUD is generated at runtime: money and research readouts, a 9-slot hotbar, a categorized build menu, a tech window and a per-machine inspector. Buildings can be dragged from the menu onto hotbar slots, and the layout is saved with PlayerPrefs.",
-        "image": "projects/box-factory/ui-hotbar.gif"
+        "text": "The entire HUD is generated at runtime: research readout, a 9-slot hotbar, a categorized build menu, a tech window and a per-machine inspector. Buildings can be dragged from the menu onto hotbar slots. Colors, sizes, fonts and texts come from a `UITheme` asset, so the look can be tweaked without touching code.",
+        "image": "projects/box-factory/ui-hotbar.png"
+      },
+      {
+        "title": "Custom Editor Tooling",
+        "text": "A Content Editor window creates and links items, recipes, buildings and techs with checkbox dropdowns, previews the UI with live mock-ups and validates the whole project (unreachable techs, duplicate IDs, recipe conflicts). A one-click Progression Builder generates the science packs, recipes, prefabs and tech tree, then simulates a full playthrough to prove the game is completable. An ID assigner hands out unique IDs automatically.",
+        "image": "projects/box-factory/editor-tools.png"
       },
       {
         "title": "Placement, Drag-Build & Hold-to-Delete",
@@ -68,28 +60,27 @@
       },
       {
         "title": "Pooling & Procedural Visuals",
-        "text": "Item visuals and sell-burst particles use Unity's `ObjectPool` under a shared `DontDestroyOnLoad` root. All sprites come from a single generated white square tinted per item or building, so the game needs no art assets."
+        "text": "Item visuals and particle bursts use Unity's `ObjectPool` under a shared `DontDestroyOnLoad` root. Buildings and items are one generated white square tinted per definition, so the game needs almost no art assets."
       }
     ],
-
     "gallery": [
+
       {
-        "src": "projects/box-factory/screenshot-1.png",
-        "alt": "Early game layout",
-        "caption": "Early game: first miner and seller"
+        "src": "projects/box-factory/portal-win.png",
+        "alt": "Portal activated win screen",
+        "caption": "Endgame: the Portal activates and the win screen shows run stats"
       },
       {
-        "src": "projects/box-factory/screenshot-2.png",
-        "alt": "Mid game factory",
-        "caption": "Mid game: multi-stage production lines"
+        "src": "projects/box-factory/splitter.png",
+        "alt": "Splitter alternating outputs",
+        "caption": "Splitter alternating between outputs, then falling back to the free side"
       },
       {
-        "src": "projects/box-factory/clip-3.mp4",
-        "poster": "projects/box-factory/screenshot-3.png",
-        "caption": "Clip: belt backing up and recovering"
+        "src": "projects/box-factory/underground-belt.png",
+        "alt": "Underground belt entrance and exit",
+        "caption": "Underground belt pair with the tunnel strip between them"
       }
     ],
-
     "code": [
       {
         "title": "Footprint.cs — rotation-aware multi-cell math",
@@ -120,22 +111,26 @@
           "    // else: stays parked at the exit edge until the neighbor has room.",
           "}"
         ],
-        "note": "One polymorphic `TryAcceptInput` call lets belts, processors, sellers and labs each decide whether to take an item. Back-pressure comes for free."
+        "note": "One polymorphic `TryAcceptInput` call lets belts, processors, labs and the Portal each decide whether to take an item. Back-pressure comes for free."
       },
       {
-        "title": "ItemVisual.cs — pooled item spawning",
+        "title": "Processor.cs — multi-input recipes with input buffers",
         "lines": [
-          "private static ObjectPool<ItemVisual> Pool =>",
-          "    pool ??= new ObjectPool<ItemVisual>(",
-          "        createFunc: CreateNew,",
-          "        actionOnGet: v => v.gameObject.SetActive(true),",
-          "        actionOnRelease: v => { v.Definition = null; v.gameObject.SetActive(false); },",
-          "        actionOnDestroy: v => { if (v != null) Destroy(v.gameObject); },",
-          "        collectionCheck: true,",
-          "        defaultCapacity: 32,",
-          "        maxSize: 1000);"
+          "private bool HasAllInputs(RecipeDefinition r)",
+          "{",
+          "    foreach (var s in r.Inputs)",
+          "    {",
+          "        if (s == null || s.item == null) return false;",
+          "        if (GetBuffered(s.item) < r.GetInputAmount(s.item)) return false;",
+          "    }",
+          "    return true;",
+          "}",
+          "",
+          "// in TryAcceptInput: refuse an input once its buffer is full",
+          "int have = GetBuffered(def);",
+          "if (have >= GetCapacity(r, def)) return false;"
         ],
-        "note": "Pooling keeps allocations flat even with huge belt networks, and statics reset on subsystem registration so Enter Play Mode without domain reload stays safe."
+        "note": "A machine only starts crafting once every ingredient is buffered, and it caps each input at a couple of batches. A full input blocks the belt instead of hoarding items."
       },
       {
         "title": "ResearchManager.cs — only accept what the tech needs",
@@ -156,17 +151,33 @@
           "}"
         ],
         "note": "Returning false makes the lab refuse the item, which naturally blocks the belt, giving the player a clear visual signal."
+      },
+      {
+        "title": "ItemVisual.cs — pooled item spawning",
+        "lines": [
+          "private static ObjectPool<ItemVisual> Pool =>",
+          "    pool ??= new ObjectPool<ItemVisual>(",
+          "        createFunc: CreateNew,",
+          "        actionOnGet: v => v.gameObject.SetActive(true),",
+          "        actionOnRelease: v => { v.Definition = null; v.gameObject.SetActive(false); },",
+          "        actionOnDestroy: v => { if (v != null) Destroy(v.gameObject); },",
+          "        collectionCheck: true,",
+          "        defaultCapacity: 32,",
+          "        maxSize: 1000);"
+        ],
+        "note": "Pooling keeps allocations flat even with huge belt networks, and statics reset on subsystem registration so Enter Play Mode without domain reload stays safe."
       }
     ],
-
     "notes": [
       "Data-driven design: `ItemDefinition`, `RecipeDefinition`, `BuildingDefinition` and `TechDefinition` are ScriptableObjects, so content is added from the editor with no new code.",
-      "Upgrades are modelled as separate building definitions with higher `speedMultiplier` values, unlocked through research, rather than in-place upgrade logic.",
-      "Singleton managers (Grid, Economy, Research, Build, UI) communicate through C# events like `OnMoneyChanged` and `OnTechCompleted`, so the UI never polls game logic for state changes.",
+      "Items and buildings inherit from `GameDefinition` and get stable IDs, so save files survive asset renames. A `DefinitionRegistry` resolves IDs at load time and still understands legacy name-based saves.",
+      "Upgrades are modelled as separate building definitions with higher `speedMultiplier` values (Mk1 to Mk3), unlocked through research, rather than in-place upgrade logic.",
+      "Singleton managers (Grid, Research, Build, UI, Save) communicate through C# events like `OnResearchChanged` and `OnTechCompleted`, and bootstrap themselves through `RuntimeInitializeOnLoadMethod`, so no manual scene wiring is needed.",
       "Uses Unity's new Input System, with UI drag-and-drop built on `EventTrigger` and layout groups generated entirely in code.",
       "Hot paths avoid per-frame allocations: pooled visuals and particles, reused cell lists and cached sprites."
     ],
-
-    "learned": "Getting multi-cell buildings to rotate cleanly was the hardest problem. My first approach stored absolute cells, which broke on rotation. Moving to a facing-relative footprint with a center-cell anchor fixed placement, ghost preview and rotation all at once. Building the UI in code taught me layout groups and event handling in depth, but I'd move to prefab-based UI next time to make iteration faster. I'd also add save/load and multi-input recipes, which the current single-input design doesn't support."
+    "learned": "Getting multi-cell buildings to rotate cleanly was the hardest problem. My first approach stored absolute cells, which broke on rotation. Moving to a facing-relative footprint with a center-cell anchor fixed placement, ghost preview and rotation all at once. Adding multi-input recipes and save/load later showed the value of the data-driven design: stable IDs and a registry meant I could rework the economy into a science-pack progression without breaking old saves. Building the UI in code taught me layout groups and event handling in depth, but I'd move to prefab-based UI next time to make iteration faster. Next I'd add power or fuel, ore patches on the map and a belt-lane system for higher throughput."
   }
 ]
+
+
